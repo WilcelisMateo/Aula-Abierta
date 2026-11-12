@@ -1,4 +1,4 @@
-# Aula Abierta — Mi Blog Docente
+# SaberUp — Mi Blog Docente
 
 Blog educativo para docentes de nivel primario y secundario en República Dominicana.
 
@@ -23,4 +23,4 @@ Blog educativo para docentes de nivel primario y secundario en República Domini
 
 ## Despliegue
 
-Sitio estático desplegado en Render (Free Tier).
+Sitio estático desplegado en Render y GitHub Pages.

@@ -22,8 +22,8 @@
 (function() {
   'use strict';
 
-  // Avatar genérico por defecto — el docente lo reemplaza desde perfil.html
-  const DEFAULT_PHOTO = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><rect width="120" height="120" fill="%236750A4" rx="60"/><text x="60" y="72" text-anchor="middle" font-size="48" font-family="sans-serif" fill="white">👩‍🏫</text></svg>');
+  // Foto por defecto (archivo foto-perfil.jpg) — editable desde perfil.html
+  const DEFAULT_PHOTO = 'foto-perfil.jpg';
 
   let cachedProfile = null;
 
@@ -41,7 +41,7 @@
   }
 
   function firstName(fullName) {
-    // Extract first name after title: "Lic. Ramona Almonte" → "Ramona"
+    // Extract first name after title: "Lic. Wilcelis Mateo" → "Wilcelis"
     const parts = fullName.trim().split(/\s+/);
     if (parts.length <= 1) return fullName;
     // Skip title-like prefixes
@@ -56,7 +56,7 @@
     if (!p) return null;
 
     const photoSrc = p.photoUrl || DEFAULT_PHOTO;
-    const titleName = p.title ? `${p.title} ${p.name}` : p.name;
+    const titleName = (p.title && !(p.name || '').toLowerCase().startsWith(p.title.toLowerCase())) ? `${p.title} ${p.name}` : p.name;
     const yearsText = p.yearsExperience
       ? `${p.school} • ${p.yearsExperience} años de experiencia`
       : p.school;
