@@ -126,7 +126,12 @@ body { min-height: max(884px, 100dvh); }
     <div class="field-group">
       <label for="f-photo">URL de la foto</label>
       <input type="text" id="f-photo" placeholder="foto-perfil.jpg o https://ejemplo.com/mi-foto.jpg"/>
-      <p class="hint">Pega la dirección URL de tu foto. Puedes subirla a <a href="https://imgur.com" target="_blank" class="text-secondary underline">Imgur</a> o usar una de Google.</p>
+      <div style="display:flex;gap:8px;margin-top:8px;align-items:center;flex-wrap:wrap">
+        <button type="button" id="btn-upload-photo" style="padding:10px 14px;border-radius:10px;background:#0f2042;color:#fff;font-weight:600;border:0;cursor:pointer">Subir foto desde mi dispositivo</button>
+        <input type="file" id="file-photo" accept="image/*" hidden/>
+        <span id="upload-msg" class="hint" style="margin:0"></span>
+      </div>
+      <p class="hint">Sube una foto desde tu dispositivo o pega aquí una dirección URL.</p>
     </div>
 
     <div class="flex items-center gap-2 mb-4 mt-4">
@@ -227,11 +232,36 @@ function showToast(message, type) {
   fSpecialty.value = profile.specialty || '';
   fSchool.value = profile.school || '';
   fYears.value = profile.yearsExperience || '';
-  fPhoto.value = profile.photoUrl || '';
+  fPhoto.value = profile.photoUrl || 'foto-perfil.jpg';
   fBio.value = profile.bio || '';
   bioCount.textContent = (profile.bio || '').length;
 
   updatePreview();
+
+  // Subir foto desde el dispositivo (se reduce a 480 px y se guarda en el navegador)
+  document.getElementById('btn-upload-photo').addEventListener('click', () => document.getElementById('file-photo').click());
+  document.getElementById('file-photo').addEventListener('change', (ev) => {
+    const file = ev.target.files && ev.target.files[0];
+    const msg = document.getElementById('upload-msg');
+    if (!file) return;
+    if (!/^image\//.test(file.type)) { msg.textContent = 'Elige un archivo de imagen.'; return; }
+    const url = URL.createObjectURL(file);
+    const im = new Image();
+    im.onload = () => {
+      const s = Math.min(im.naturalWidth, im.naturalHeight);
+      const c = document.createElement('canvas'); c.width = 480; c.height = 480;
+      const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, 480, 480);
+      const sy = Math.max(0, (im.naturalHeight - s) / 2 - (im.naturalHeight - s) * 0.15);
+      ctx.drawImage(im, (im.naturalWidth - s) / 2, sy, s, s, 0, 0, 480, 480);
+      URL.revokeObjectURL(url);
+      fPhoto.value = c.toDataURL('image/jpeg', 0.86);
+      fPhoto.dispatchEvent(new Event('input'));
+      msg.textContent = 'Foto lista. Pulsa Guardar.';
+    };
+    im.onerror = () => { URL.revokeObjectURL(url); msg.textContent = 'No se pudo leer la imagen.'; };
+    im.src = url;
+    ev.target.value = '';
+  });
 
   // Live preview updates
   [fName, fTitle, fSpecialty, fSchool, fPhoto].forEach(el => {

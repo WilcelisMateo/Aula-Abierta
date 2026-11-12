@@ -45,7 +45,7 @@
     const parts = fullName.trim().split(/\s+/);
     if (parts.length <= 1) return fullName;
     // Skip title-like prefixes
-    const titles = ['lic.','mtr.','mtra.','dr.','dra.','ing.','prof.','tec.'];
+    const titles = ['lic.','licda.','mtro.','mtr.','mtra.','dr.','dra.','ing.','prof.','tec.'];
     let start = 0;
     if (titles.includes(parts[0].toLowerCase())) start = 1;
     return parts[start] || fullName;
@@ -105,6 +105,7 @@
   }
 
   // Expose globally
+  window.refreshTeacherProfile = async function() { cachedProfile = null; return applyTeacherProfile(); };
   window.applyTeacherProfile = applyTeacherProfile;
   window.getTeacherProfile = getProfile;
   window.TEACHER_DEFAULT_PHOTO = DEFAULT_PHOTO;
