@@ -89,6 +89,7 @@
       '.ep-fab{position:fixed;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 84px);z-index:60;display:flex;align-items:center;gap:6px;padding:10px 16px;border:0;border-radius:999px;background:#0f2042;color:#fff;font:600 14px/1 "Source Sans 3",system-ui,sans-serif;box-shadow:0 4px 14px rgba(0,9,34,.28);cursor:pointer}',
       '.ep-fab:hover{background:#000922}',
       '.ep-fab .material-symbols-outlined{font-size:18px}',
+      '@media(max-width:480px){.ep-fab{padding:0;width:44px;height:44px;justify-content:center;opacity:.92}.ep-fab span:last-child{display:none}.ep-fab .material-symbols-outlined{font-size:22px}}',
       'img[data-tp="photo"].ep-clickable{cursor:pointer}',
       '.ep-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,9,34,.55);display:flex;align-items:flex-end;justify-content:center;padding:0}',
       '@media(min-width:640px){.ep-overlay{align-items:center;padding:24px}}',
