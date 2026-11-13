@@ -44,6 +44,7 @@
     ]}
   };
 
+  window.SABERUP_BANCO = BANCO; // lo usa el mini-examen de actividades.html
   var MIXTO = 'Reto mixto';
   var VIDAS = 3;
   var ROOT = null;
@@ -123,6 +124,8 @@
     G = null;
     var h = '<span class="sg-badge"><span class="material-symbols-outlined" style="font-size:16px" aria-hidden="true">sports_esports</span>Aprende jugando</span>' +
       '<h2>Reto SaberUp</h2><p>Responde, suma puntos y conserva tus 3 vidas. Después de cada pregunta aprenderás por qué.</p>' +
+      '<div style="margin-top:8px">' + (window.SaberUpProgreso ? SaberUpProgreso.bloom(['Recordar', 'Comprender']) : '') + '</div>' +
+      (window.SaberUpProgreso ? SaberUpProgreso.card(false) : '') +
       '<div class="sg-grid">';
     Object.keys(BANCO).forEach(function (a) {
       var b = mejor(a);
@@ -176,7 +179,7 @@
     G.respondida = true;
     var p = G.lista[G.i], acierto = G.ops[k].ok, extra = 0;
     if (acierto) {
-      G.racha++; G.aciertos++;
+      G.racha++; G.aciertos++; G.maxR = Math.max(G.maxR || 0, G.racha);
       extra = Math.min(G.racha - 1, 3) * 2;
       G.pts += 10 + extra;
     } else { G.racha = 0; G.vidas--; }
@@ -207,6 +210,10 @@
     var st = '';
     for (var s = 0; s < 3; s++) st += s < estrellas ? '⭐' : '☆';
     var area = G.area;
+    if (window.SaberUpProgreso) {
+      var badge = estrellas === 3 ? 'estrellas' : (G.maxR >= 3 ? 'racha' : 'primera');
+      SaberUpProgreso.award(5 + Math.round(G.pts / 2), badge);
+    }
     ROOT.innerHTML = '<div class="sg sg-end"><span class="sg-badge">Resultado · ' + esc(area) + '</span>' +
       '<div class="sg-stars" aria-label="' + estrellas + ' de 3 estrellas">' + st + '</div>' +
       '<div class="sg-score">' + G.pts + ' pts</div>' +
