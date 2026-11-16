@@ -6,7 +6,7 @@
       min-height: max(884px, 100dvh);
     }
   </style>
-  <link rel="stylesheet" href="tema-navidad.css"/>
+  <link rel="stylesheet" href="tema-navidad.css?v=etp2"/>
 </head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen" data-auto-profile><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(22,91,51,0.05)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-1"><img alt="Logo SaberUp" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc5inx07kdMNiPilOQ2dgiYy0fxqiFi1z1VBbAE2kswSZLikWihwSGN9sSRJjYkQR-mXq3G9NkUxJuNRZR0rTUdjDP8O98CLkZJNqNyrOGWAei46h6drUzCQbHs7JlswwIwnct6VynZzaHVHa22OmbTrWUYYob-1xTJklooTZ2w7DXmXtHgOAtLvQR8VZ5B_256iIbTck9dkeheUO8i1SBk8nxh8KBBV_utg_o2VHm1Z_Oa3L-JFs"/><div class="flex flex-col truncate leading-tight"><div class="flex items-baseline gap-space-xs"><span class="font-headline-sm text-title-md text-primary truncate font-bold" data-site="name">SaberUp</span></div><span class="font-label-sm text-label-sm text-secondary truncate tracking-normal font-semibold">Mi Blog Docente • Publicaciones</span></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Buscar publicaciones o recursos" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[22px]">search</span></button><button aria-label="Guardados y marcadores" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[22px]">bookmark</span></button><a aria-label="Perfil del docente" class="w-11 h-11 flex items-center justify-center rounded-full hover:opacity-90 transition-opacity" data-path="perfil-docente" href="panel.html"><img alt="Lic. Wilcelis Mateo" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container/20" data-tp="photo" src="foto-perfil.jpg"/></a></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full">
 <!-- Cabecera de la sección -->
 <section class="px-gutter-mobile pt-space-md pb-space-sm">
@@ -25,11 +25,11 @@
 <section class="px-gutter-mobile py-space-xs">
 <div class="flex items-center gap-space-xs">
 <div class="relative flex-1">
-<label class="sr-only" for="buscar-publicacion">Buscar artículos, temas o grados</label>
+<label class="sr-only" for="buscar-publicacion">Buscar artículos, temas o módulos formativos</label>
 <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant">
 <span class="material-symbols-outlined text-[20px]">search</span>
 </span>
-<input class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm shadow-[0_2px_8px_-2px_rgba(22,91,51,0.06)] focus:outline-none focus:ring-2 focus:ring-secondary/40 transition-shadow" id="buscar-publicacion" placeholder="Buscar por tema, grado o competencia..." type="search"/>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm shadow-[0_2px_8px_-2px_rgba(22,91,51,0.06)] focus:outline-none focus:ring-2 focus:ring-secondary/40 transition-shadow" id="buscar-publicacion" placeholder="Buscar por tema, módulo formativo o competencia..." type="search"/>
 </div>
 <button aria-label="Abrir panel de filtros avanzados" class="h-[42px] px-3.5 flex items-center gap-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-[0_2px_8px_-2px_rgba(22,91,51,0.06)] hover:bg-surface-container transition-colors shrink-0" id="btn-toggle-filtros" type="button">
 <span class="material-symbols-outlined text-[18px] text-secondary">tune</span>
@@ -50,7 +50,7 @@
 </div>
 <div class="flex flex-wrap gap-1.5" id="chips-activos">
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-xs">
-          Nivel: Primaria (4to-6to)
+          Nivel: Bachillerato Técnico (4to-6to)
           <button aria-label="Quitar filtro" class="text-on-surface-variant hover:text-error" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
 </span>
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-xs">
@@ -67,22 +67,22 @@
         Todas las áreas
       </button>
 <button aria-selected="false" class="filtro-chip whitespace-nowrap px-3.5 py-1.5 rounded-full font-label-md text-label-md font-semibold bg-surface-container-lowest text-on-surface shadow-xs hover:bg-surface-container transition-colors" role="tab">
-        Ciencias Naturales
+        Agropecuaria
       </button>
 <button aria-selected="false" class="filtro-chip whitespace-nowrap px-3.5 py-1.5 rounded-full font-label-md text-label-md font-semibold bg-surface-container-lowest text-on-surface shadow-xs hover:bg-surface-container transition-colors" role="tab">
-        Matemáticas
+        Gestión Administrativa y Tributaria
       </button>
 <button aria-selected="false" class="filtro-chip whitespace-nowrap px-3.5 py-1.5 rounded-full font-label-md text-label-md font-semibold bg-surface-container-lowest text-on-surface shadow-xs hover:bg-surface-container transition-colors" role="tab">
-        Lengua Española
+        Informática y Comunicaciones
       </button>
 <button aria-selected="false" class="filtro-chip whitespace-nowrap px-3.5 py-1.5 rounded-full font-label-md text-label-md font-semibold bg-surface-container-lowest text-on-surface shadow-xs hover:bg-surface-container transition-colors" role="tab">
-        Ciencias Sociales
+        Enfermería
       </button>
 <button aria-selected="false" class="filtro-chip whitespace-nowrap px-3.5 py-1.5 rounded-full font-label-md text-label-md font-semibold bg-surface-container-lowest text-on-surface shadow-xs hover:bg-surface-container transition-colors" role="tab">
-        Primaria (4to-6to)
+        Bachillerato Técnico (4to-6to)
       </button>
 <button aria-selected="false" class="filtro-chip whitespace-nowrap px-3.5 py-1.5 rounded-full font-label-md text-label-md font-semibold bg-surface-container-lowest text-on-surface shadow-xs hover:bg-surface-container transition-colors" role="tab">
-        Secundaria
+        Módulos Formativos
       </button>
 </div>
 </section>
@@ -106,17 +106,17 @@
 </section>
 <!-- Lista de Tarjetas de Publicaciones -->
 <section class="px-gutter-mobile py-space-sm flex flex-col gap-space-lg">
-<!-- Tarjeta 1: Ciencias Naturales -->
+<!-- Tarjeta 1: Agropecuaria -->
 <article class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0_2px_12px_-2px_rgba(22,91,51,0.06)] flex flex-col transition-all duration-200">
 <div class="relative w-full h-44 bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Close up photograph of lush green Caribbean tropical raindrops falling gently over river rocks and tropical foliage, soft natural daylight, academic nature documentary photography with crisp clarity and fresh turquoise reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWJ5Q_O1RX8b6HRl_fZKtOuIiXdKu-XGwzJUn2RqS1V57cxOyYkm4nj8viMEEL9Ez9shA4z243h1GSoBym23IpjUwUybaqYNHwcMw1qVbqe4hyUwb_DJs4Jsht_VB3maRhjkXks5ruV3YffmnhB9c-EPRzpwQJJ1Bd_obQ8XjP29C15YPvWkDuErcugQ80bVIk0tHxYirfVnWiKos2JoYMpDdwD9FS6c3oETgrf18hWNCOH2EmHv0"/>
+<img class="w-full h-full object-cover" data-alt="Close up photograph of lush green Caribbean tropical raindrops falling gently over river rocks and tropical foliage, soft natural daylight, academic nature documentary photography with crisp clarity and fresh turquoise reflections." src="portada-agropecuaria.svg"/>
 <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
 <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary/95 text-on-secondary font-label-sm text-label-sm font-semibold backdrop-blur-xs">
-<span class="material-symbols-outlined text-[13px]">water_drop</span>
-            Ciencias Naturales
+<span class="material-symbols-outlined text-[13px]">agriculture</span>
+            Agropecuaria
           </span>
 <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-highest/90 text-on-surface font-label-sm text-label-sm backdrop-blur-xs">
-            5to Grado
+            5to Técnico
           </span>
 </div>
 <button aria-label="Guardar en favoritos" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/90 text-on-surface-variant hover:text-primary flex items-center justify-center backdrop-blur-xs shadow-xs transition-colors" type="button">
@@ -135,12 +135,10 @@
 </div>
 <!-- Título -->
 <h2 class="font-headline-sm text-headline-sm text-primary font-bold leading-snug">
-          El ciclo del agua y su importancia para la vida
+          Compost y manejo del suelo en la finca escolar
         </h2>
 <!-- Extracto -->
-<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">
-          Secuencia didáctica activa para comprender evaporación, condensación y precipitación a través de experimentos caseros y observación climática insular.
-        </p>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">Cómo transformar residuos orgánicos en abono, mejorar la fertilidad del suelo y aplicar prácticas sostenibles en la finca escolar.</p>
 <!-- Insignias pedagógicas específicas -->
 <div class="flex flex-wrap gap-1.5 pt-1">
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed/40 text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">
@@ -170,17 +168,17 @@
 </div>
 </div>
 </article>
-<!-- Tarjeta 2: Matemáticas -->
+<!-- Tarjeta 2: Gestión Administrativa y Tributaria -->
 <article class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0_2px_12px_-2px_rgba(22,91,51,0.06)] flex flex-col transition-all duration-200">
 <div class="relative w-full h-44 bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Overhead aesthetic educational photograph of colorful tactile geometric fraction blocks and wooden math manipulatives arranged on a warm clean birch table with clean study notes, crisp natural school lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYIhsgSBJ8LnjxXSp1RhoyAlO025qjUPeiqGNKsOSsOdMrLUgj27tuM4ccvFE4SA4V19QP7whbfFzwvNOyo6CVVuX5sFByAqnaDzGeIoXBldPtI-14Kb8K7NjFj7MPtiEfmJaH6uAsATdYCIvR9GmOQkCDONKao7HzU3cTKPkTR5lfuF8OXX7Fs9oSooOpXADDHZveLDaoi_bp3JEUAcRDZT3-tpFMt0WMWccytZFq3Rz5zbH-0Kg"/>
+<img class="w-full h-full object-cover" data-alt="Overhead aesthetic educational photograph of colorful tactile geometric fraction blocks and wooden math manipulatives arranged on a warm clean birch table with clean study notes, crisp natural school lighting." src="portada-gestion.svg"/>
 <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
 <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold backdrop-blur-xs">
-<span class="material-symbols-outlined text-[13px]">calculate</span>
-            Matemáticas
+<span class="material-symbols-outlined text-[13px]">receipt_long</span>
+            Gestión Administrativa y Tributaria
           </span>
 <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-highest/90 text-on-surface font-label-sm text-label-sm backdrop-blur-xs">
-            6to Grado
+            6to Técnico
           </span>
 </div>
 <button aria-label="Guardar en favoritos" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/90 text-on-surface-variant hover:text-primary flex items-center justify-center backdrop-blur-xs shadow-xs transition-colors" type="button">
@@ -197,11 +195,9 @@
 <span>11 Marzo 2025</span>
 </div>
 <h2 class="font-headline-sm text-headline-sm text-primary font-bold leading-snug">
-          Comprendiendo las fracciones equivalentes: método visual para el aula y el hogar
+          El asiento contable paso a paso: del documento fuente al libro diario
         </h2>
-<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">
-          Estrategias gráficas paso a paso para desmitificar las fracciones y construir intuición matemática auténtica antes de pasar a los algoritmos abstractos.
-        </p>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">Aprende a registrar operaciones comerciales aplicando la partida doble, sin perderte en el proceso.</p>
 <div class="flex flex-wrap gap-1.5 pt-1">
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
 <span class="material-symbols-outlined text-[14px]">sports_esports</span>
@@ -228,17 +224,17 @@
 </div>
 </div>
 </article>
-<!-- Tarjeta 3: Lengua Española -->
+<!-- Tarjeta 3: Informática y Comunicaciones -->
 <article class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0_2px_12px_-2px_rgba(22,91,51,0.06)] flex flex-col transition-all duration-200">
 <div class="relative w-full h-44 bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Macro photography of an open student writing notebook with neat handwritten Spanish sentences, a classic fountain pen resting gracefully on the margins, warm soft golden ambient library lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlECXlTecRSiXJ1GgFghC3is9A0RsZSFoNUpg6HJvjCvBZ6rMMh-pSv6DOdwF7J6Xuhg3JHiHmaPRnrAK08FT8pqUu2fSQ5KF0Zf4bS4Q1RXMH-LQ3sWMVuZ_R-UnfW-8_i9RkIu0LBbwxf2gwa5iFp3tMxxO-_5X5MVTGbbQkHPVluB63gu1X0GBOlm1l7C-YL7gsGUJ2uizMO4N6ABKtNVws1oEEZeW9it5a43iV2VOpF5CZ0hM"/>
+<img class="w-full h-full object-cover" data-alt="Macro photography of an open student writing notebook with neat handwritten Spanish sentences, a classic fountain pen resting gracefully on the margins, warm soft golden ambient library lighting." src="portada-informatica.svg"/>
 <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
 <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold backdrop-blur-xs">
-<span class="material-symbols-outlined text-[13px]">spellcheck</span>
-            Lengua Española
+<span class="material-symbols-outlined text-[13px]">computer</span>
+            Informática y Comunicaciones
           </span>
 <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-highest/90 text-on-surface font-label-sm text-label-sm backdrop-blur-xs">
-            4to Grado
+            4to Técnico
           </span>
 </div>
 <button aria-label="Guardar en favoritos" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/90 text-on-surface-variant hover:text-primary flex items-center justify-center backdrop-blur-xs shadow-xs transition-colors" type="button">
@@ -255,11 +251,9 @@
 <span>08 Marzo 2025</span>
 </div>
 <h2 class="font-headline-sm text-headline-sm text-primary font-bold leading-snug">
-          Cómo construir oraciones claras y coherentes
+          Pensamiento algorítmico: del pseudocódigo a tu primer programa
         </h2>
-<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">
-          Guía de sintaxis lúdica para niños: identificación del sujeto y predicado mediante fórmulas narrativas y conectores lógicos cotidianos.
-        </p>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">Aprende a diseñar algoritmos en pseudocódigo y conviértelos en un programa funcional.</p>
 <div class="flex flex-wrap gap-1.5 pt-1">
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed/40 text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">
 <span class="material-symbols-outlined text-[14px]">print</span>
@@ -286,17 +280,17 @@
 </div>
 </div>
 </article>
-<!-- Tarjeta 4: Ciencias Sociales -->
+<!-- Tarjeta 4: Enfermería -->
 <article class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0_2px_12px_-2px_rgba(22,91,51,0.06)] flex flex-col transition-all duration-200">
 <div class="relative w-full h-44 bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Artistic respectful depiction of historical Dominican patriotic heritage, architectural colonial facade bathed in early Caribbean morning sun with national flag colors subtly harmonized in a vintage academic textbook illustration style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXJp_0VqUQgNOnlXlqb3X4ukXlJBd4EO1bgbvYhUKuNdPghshpdbMQTtUQ3j1rwZsRFz4Gueha8wTWICkffQXpCL39oPE7aaI2sGtEQd3YcXx8wRLkt-m_IAcP98Ai_zgNBMCpsx9-I9ixRkoIoFQIXdpYXHgIgsI8xGK7CzYyaqZ7quVNDABqY_VqkyAXf42PoxCNe_7cEuwNT2IargsPFuK26WSYq_CE7Nc0LjGQrCEgQv411qI"/>
+<img class="w-full h-full object-cover" data-alt="Artistic respectful depiction of historical Dominican patriotic heritage, architectural colonial facade bathed in early Caribbean morning sun with national flag colors subtly harmonized in a vintage academic textbook illustration style." src="portada-informatica.svg"/>
 <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
 <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold backdrop-blur-xs">
-<span class="material-symbols-outlined text-[13px]">history_edu</span>
-            Ciencias Sociales
+<span class="material-symbols-outlined text-[13px]">medical_services</span>
+            Enfermería
           </span>
 <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-highest/90 text-on-surface font-label-sm text-label-sm backdrop-blur-xs">
-            5to Grado
+            5to Técnico
           </span>
 </div>
 <button aria-label="Guardar en favoritos" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/90 text-on-surface-variant hover:text-primary flex items-center justify-center backdrop-blur-xs shadow-xs transition-colors" type="button">
@@ -313,10 +307,9 @@
 <span>03 Marzo 2025</span>
 </div>
 <h2 class="font-headline-sm text-headline-sm text-primary font-bold leading-snug">
-          Explorando la historia dominicana: símbolos y gestas patrias explicadas paso a paso
-        </h2>
+          Higiene de manos: los 5 momentos de la OMS</h2>
 <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">
-          Un recorrido reflexivo por el proceso independentista de 1844, diseñado para generar pensamiento crítico e identidad ciudadana en el segundo ciclo de básica.
+          La medida más simple y eficaz para prevenir infecciones asociadas a la atención de salud.
         </p>
 <div class="flex flex-wrap gap-1.5 pt-1">
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
@@ -365,17 +358,17 @@
 <div class="flex flex-col gap-1">
 <h3 class="font-title-md text-title-md text-primary font-bold">Consejo de exploración docente</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-          ¿Buscas una competencia curricular específica del MINERD? Escribe códigos o descriptores como <em class="font-medium text-primary">"comprensión oral"</em> o <em class="font-medium text-primary">"fracciones impropias"</em> en el buscador para obtener planificaciones asociadas.
+          ¿Buscas una competencia curricular específica del MINERD? Escribe códigos o descriptores como <em class="font-medium text-primary">"partida doble"</em> o <em class="font-medium text-primary">"signos vitales"</em> en el buscador para obtener planificaciones asociadas.
         </p>
 <div class="pt-1 flex flex-wrap gap-2">
 <button class="sugerencia-tag font-label-sm text-label-sm px-2.5 py-1 rounded-lg bg-surface-container-lowest text-secondary font-semibold hover:bg-surface-container transition-colors" type="button">
-            #GeometríaLúdica
+            #PartidaDoble
           </button>
 <button class="sugerencia-tag font-label-sm text-label-sm px-2.5 py-1 rounded-lg bg-surface-container-lowest text-secondary font-semibold hover:bg-surface-container transition-colors" type="button">
-            #LecturaCrítica
+            #Algoritmos
           </button>
 <button class="sugerencia-tag font-label-sm text-label-sm px-2.5 py-1 rounded-lg bg-surface-container-lowest text-secondary font-semibold hover:bg-surface-container transition-colors" type="button">
-            #EfeméridesPatrias
+            #Bioseguridad
           </button>
 </div>
 </div>
@@ -445,8 +438,8 @@
       });
     });
   })();
-</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(22,91,51,0.06)]" data-active-classes="text-primary-container font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="inicio" href="index.html"><span class="material-symbols-outlined text-[24px]">school</span><span class="font-label-sm text-label-sm">Inicio</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 transition-colors text-primary-container font-semibold" data-path="publicaciones" href="publicaciones.html"><span class="material-symbols-outlined text-[24px]">menu_book</span><span class="font-label-sm text-label-sm">Artículos</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="recursos-didacticos" href="recursos.html"><span class="material-symbols-outlined text-[24px]">folder_open</span><span class="font-label-sm text-label-sm">Recursos</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="actividades-pedagogicas" href="actividades.html"><span class="material-symbols-outlined text-[24px]">extension</span><span class="font-label-sm text-label-sm">Actividades</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="perfil-docente" href="panel.html"><span class="material-symbols-outlined text-[24px]">person_outline</span><span class="font-label-sm text-label-sm">Perfil</span></a></div></nav><script src="db.js"></script>
-<script src="profile-loader.js"></script>
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(22,91,51,0.06)]" data-active-classes="text-primary-container font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="inicio" href="index.html"><span class="material-symbols-outlined text-[24px]">school</span><span class="font-label-sm text-label-sm">Inicio</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 transition-colors text-primary-container font-semibold" data-path="publicaciones" href="publicaciones.html"><span class="material-symbols-outlined text-[24px]">menu_book</span><span class="font-label-sm text-label-sm">Artículos</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="recursos-didacticos" href="recursos.html"><span class="material-symbols-outlined text-[24px]">folder_open</span><span class="font-label-sm text-label-sm">Recursos</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="actividades-pedagogicas" href="actividades.html"><span class="material-symbols-outlined text-[24px]">extension</span><span class="font-label-sm text-label-sm">Actividades</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="perfil-docente" href="panel.html"><span class="material-symbols-outlined text-[24px]">person_outline</span><span class="font-label-sm text-label-sm">Perfil</span></a></div></nav><script src="db.js?v=etp2"></script>
+<script src="profile-loader.js?v=etp2"></script>
 <script>
 // === WhatsApp share helper ===
 function shareWhatsAppCard(btn) {
@@ -461,10 +454,10 @@ function shareWhatsAppCard(btn) {
 
 (function(){
   const SUBJECT_ICONS = {
-    'Ciencias Naturales': 'water_drop',
-    'Matemáticas': 'calculate',
-    'Lengua Española': 'spellcheck',
-    'Ciencias Sociales': 'history_edu'
+    'Agropecuaria': 'agriculture',
+    'Gestión Administrativa y Tributaria': 'receipt_long',
+    'Informática y Comunicaciones': 'computer',
+    'Enfermería': 'medical_services'
   };
   const DEFAULT_AVATARS = [
     'https://lh3.googleusercontent.com/aida-public/AB6AXuBRcaU1a9SehToqHzZoKH7ouhrBm9X7Bqa5fM3mNtthWps-8lRnLR8JET4zDNHgro63e8ockVSyPOjclV1gwgs8ZNZFuZTtqSVISBGzbyrL3RxPEgs5p7LkV6DmYTbITOt6gyZhuZCmPOQuywp52_rqPWWyI7kisA3ca_pC5GOMy178ylUpVsZGUCsEzJAYZ33KPsApqu5dnkysijaXqSg4tmIOBM-QsALU_ZcG1haJBew1TuoPW7U',
@@ -549,10 +542,10 @@ function shareWhatsAppCard(btn) {
     let list = allArticles.slice();
     // Filter by subject
     if (currentFilter !== 'Todas las áreas') {
-      if (currentFilter === 'Primaria (4to-6to)') {
-        list = list.filter(a => a.grade && a.grade.toLowerCase().includes('primaria'));
-      } else if (currentFilter === 'Secundaria') {
-        list = list.filter(a => a.grade && a.grade.toLowerCase().includes('secundaria'));
+      if (currentFilter === 'Bachillerato Técnico (4to-6to)') {
+        list = list.filter(a => a.grade && a.grade.toLowerCase().includes('bachillerato'));
+      } else if (currentFilter === 'Módulos Formativos') {
+        list = list.filter(a => a.grade && a.grade.toLowerCase().includes('módulo'));
       } else {
         list = list.filter(a => a.subject === currentFilter);
       }
@@ -649,8 +642,8 @@ function shareWhatsAppCard(btn) {
   });
 })();
 </script>
-<script src="descargas.js"></script>
-<script src="buscar.js"></script>
-<script src="edit-profile.js"></script>
-<script src="tema-navidad.js"></script>
+<script src="descargas.js?v=etp2"></script>
+<script src="buscar.js?v=etp2"></script>
+<script src="edit-profile.js?v=etp2"></script>
+<script src="tema-navidad.js?v=etp2"></script>
 </body></html>

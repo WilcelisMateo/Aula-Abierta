@@ -6,7 +6,7 @@
       min-height: max(884px, 100dvh);
     }
   </style>
-  <link rel="stylesheet" href="tema-navidad.css"/>
+  <link rel="stylesheet" href="tema-navidad.css?v=etp2"/>
 </head><body data-auto-profile class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(22,91,51,0.05)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-1"><img alt="Logo SaberUp" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc5inx07kdMNiPilOQ2dgiYy0fxqiFi1z1VBbAE2kswSZLikWihwSGN9sSRJjYkQR-mXq3G9NkUxJuNRZR0rTUdjDP8O98CLkZJNqNyrOGWAei46h6drUzCQbHs7JlswwIwnct6VynZzaHVHa22OmbTrWUYYob-1xTJklooTZ2w7DXmXtHgOAtLvQR8VZ5B_256iIbTck9dkeheUO8i1SBk8nxh8KBBV_utg_o2VHm1Z_Oa3L-JFs"/><div class="flex flex-col truncate leading-tight"><div class="flex items-baseline gap-space-xs"><span class="font-headline-sm text-title-md text-primary truncate font-bold" data-site="name">SaberUp</span></div><span class="font-label-sm text-label-sm text-secondary truncate tracking-normal font-semibold">Mi Blog Docente • Recursos Didacticos</span></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Buscar publicaciones o recursos" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[22px]">search</span></button><button aria-label="Guardados y marcadores" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[22px]">bookmark</span></button><a aria-label="Perfil del docente" class="w-11 h-11 flex items-center justify-center rounded-full hover:opacity-90 transition-opacity" data-path="perfil-docente" href="panel.html"><img alt="Lic. Wilcelis Mateo" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container/20" data-tp="photo" src="foto-perfil.jpg"/></a></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full">
 <!-- Intro Header Section -->
 <section class="px-gutter-mobile pt-space-md pb-space-sm">
@@ -37,23 +37,23 @@
 </div>
 <!-- Quick Selector Pill Filters -->
 <div class="flex flex-col gap-2 pt-1">
-<!-- Asignatura Selector -->
+<!-- Área Selector -->
 <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
 <span class="font-label-sm text-label-sm text-on-surface-variant shrink-0 font-bold uppercase tracking-wider pl-0.5">Área:</span>
 <button class="filter-subject-btn shrink-0 px-3 py-1 rounded-full font-label-md text-label-md bg-primary-container text-on-primary transition-all active:scale-95" data-filter="all">Todas</button>
-<button class="filter-subject-btn shrink-0 px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container text-on-surface hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" data-filter="ciencias">Ciencias</button>
-<button class="filter-subject-btn shrink-0 px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container text-on-surface hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" data-filter="matematicas">Matemáticas</button>
-<button class="filter-subject-btn shrink-0 px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container text-on-surface hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" data-filter="lengua">Lengua</button>
-<button class="filter-subject-btn shrink-0 px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container text-on-surface hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" data-filter="sociales">Sociales</button>
+<button class="filter-subject-btn shrink-0 px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container text-on-surface hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" data-filter="agropecuaria">Agropecuaria</button>
+<button class="filter-subject-btn shrink-0 px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container text-on-surface hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" data-filter="gestion">Gestión y Tributaria</button>
+<button class="filter-subject-btn shrink-0 px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container text-on-surface hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" data-filter="informatica">Informática</button>
+<button class="filter-subject-btn shrink-0 px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container text-on-surface hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all" data-filter="enfermeria">Enfermería</button>
 </div>
 <!-- Grado & Tipo Selector Row -->
 <div class="grid grid-cols-2 gap-2 pt-1">
 <div class="relative">
 <select class="w-full appearance-none bg-surface-container-low text-on-surface font-label-md text-label-md py-2 pl-3 pr-8 rounded-lg focus:outline-none" id="grade-filter">
 <option value="all">Todos los grados</option>
-<option value="4to">4to Primaria</option>
-<option value="5to">5to Primaria</option>
-<option value="6to">6to Primaria</option>
+<option value="4to">4to Técnico</option>
+<option value="5to">4to Técnico</option>
+<option value="6to">6to Técnico</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 top-2.5 text-[18px] text-on-surface-variant pointer-events-none">expand_more</span>
 </div>
@@ -103,27 +103,27 @@
 </section>
 <!-- Resource Cards List Container -->
 <section class="px-gutter-mobile py-space-sm flex flex-col gap-space-md" id="resource-list">
-<!-- CARD 1: El Ciclo Hidrológico -->
-<article class="resource-card bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md" data-cat="guias" data-grade="5to" data-subject="ciencias" data-type="guia">
+<!-- CARD 1: Compost y suelo -->
+<article class="resource-card bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md" data-cat="guias" data-grade="4to" data-subject="agropecuaria" data-type="guia">
 <!-- Media Preview Header -->
 <div class="relative w-full h-44 bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Educational visual diagram showing the hydrological water cycle with precipitation, condensation, and evaporation, painted in soft botanical watercolor textures of azure blues and earthy slate tones suited for elementary school science class." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuym35r9jnVPQ-cB6sKmBuIGwhhYDYBRebw0xrfD9WyI79uIxcpphfp0gPP1SGirVUlZok3O2SF3FOB4TsYsmYj2zmkQRqH9wF7gdqiL3KmH-4KCzaMvr0oCmhfa7O1D-lgEWwQmmLcM3_Rx6FH32xQeW1fRLQeBit7rHxfCw3XfmHETt00FHWKm--xq-MhW3q4xsP5knfxwPTzb8d_CdbJMmu5YvJlKyPKLj3F0_DfQ3JtWqiQQE"/>
+<img class="w-full h-full object-cover" data-alt="Educational visual diagram showing the hydrological water cycle with precipitation, condensation, and evaporation, painted in soft botanical watercolor textures of azure blues and earthy slate tones suited for elementary school science class." src="portada-agropecuaria.svg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent"></div>
 <!-- Top Tags Overlay -->
 <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-sm text-label-sm font-bold shadow-sm">
-<span class="material-symbols-outlined text-[14px]">science</span>
-            Ciencias Naturales
+<span class="material-symbols-outlined text-[14px]">agriculture</span>
+            Agropecuaria
           </span>
 <span class="px-2.5 py-1 rounded-full bg-primary-container/90 backdrop-blur-md text-on-primary font-label-sm text-label-sm font-semibold">
-            5to Primaria
+            4to Técnico
           </span>
 </div>
 <!-- Quick Spec Badge Overlay -->
 <div class="absolute bottom-2.5 left-3 flex items-center gap-2">
 <span class="inline-flex items-center gap-1 text-on-primary font-label-sm text-label-sm drop-shadow">
 <span class="material-symbols-outlined text-[16px]">description</span>
-            3 páginas • Experimento de laboratorio
+            2 páginas • Práctica de finca escolar
           </span>
 </div>
 </div>
@@ -131,10 +131,10 @@
 <div class="p-4 flex flex-col gap-3">
 <div>
 <h2 class="font-headline-sm text-title-lg text-primary leading-snug font-bold">
-            Guía Didáctica y Ficha de Experimento: El Ciclo Hidrológico
+            Guía Práctica: Compost y Manejo del Suelo
           </h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
-            Secuencia completa para armar un terrario condensador en botella plástica reutilizable. Fomenta el método científico con registro de hipótesis y conclusiones guiadas.
+            Pasos para elaborar y monitorear una pila de compost, con registro semanal y rúbrica de evaluación. Fomenta la producción sostenible en la finca escolar.
           </p>
 </div>
 <!-- Technical Metadata Grid -->
@@ -145,7 +145,7 @@
 </div>
 <div class="flex flex-col truncate">
 <span class="font-label-sm text-label-sm text-on-surface-variant">Formato</span>
-<span class="font-label-md text-label-md font-bold truncate">PDF • 2.4 MB</span>
+<span class="font-label-md text-label-md font-bold truncate">PDF • 5 KB</span>
 </div>
 </div>
 <div class="flex items-center gap-2">
@@ -165,29 +165,29 @@
 </div>
 <!-- Action Buttons -->
 <div class="grid grid-cols-2 gap-2.5 pt-1">
-<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-[0.98]" onclick="triggerPreview('Guía: El Ciclo Hidrológico', 'PDF • 3 Páginas • Laboratorio de Ciencias', 'ciencias')">
+<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-[0.98]" onclick="triggerPreview('Guía: Compost y Manejo del Suelo', 'PDF • 2 Páginas • Práctica de finca escolar', 'agropecuaria')">
 <span class="material-symbols-outlined text-[18px]">visibility</span>
             Vista Previa
           </button>
-<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:opacity-95 transition-all active:scale-[0.98]" onclick="triggerDownload('Ciclo_Hidrologico_Ficha5to.pdf')">
+<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:opacity-95 transition-all active:scale-[0.98]" onclick="triggerDownload('Guia_Compost_Suelo_Finca.pdf')">
 <span class="material-symbols-outlined text-[18px]">download</span>
             Descargar
           </button>
 </div>
 </div>
 </article>
-<!-- CARD 2: Fracciones Equivalentes -->
-<article class="resource-card bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md" data-cat="guias" data-grade="4to" data-subject="matematicas" data-type="rubrica">
+<!-- CARD 2: Asiento contable -->
+<article class="resource-card bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md" data-cat="guias" data-grade="4to" data-subject="gestion" data-type="rubrica">
 <div class="relative w-full h-44 bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Classroom assessment worksheet flatlay featuring colorful fraction bars, geometric strips, mathematical evaluation matrices, and tidy handwritten teacher annotations on warm beige linen desk background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAuEwuv2lRmFAXUUvUq7SPGEqNaWFpYOeOskwbVUr9e5AdjxldD28rO6nufnjwsPuTo4TaDoTMOeeRMadPkPu_BlCy1EL0bO7LFDGTX2jVV7f_Md6oKv37yUmilNoK1yL6nOpZqP7UjL7wHy1kQvLcHkt8nPap-9qkQ8OuYFums8b4Bglpi0MZ1F9VqKJYwq07YpUzzosG7ZeeR76MDvXYxGjgu0b7YcoZhVQiAHM3LHjQThYDWEc"/>
+<img class="w-full h-full object-cover" data-alt="Classroom assessment worksheet flatlay featuring colorful fraction bars, geometric strips, mathematical evaluation matrices, and tidy handwritten teacher annotations on warm beige linen desk background." src="portada-gestion.svg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent"></div>
 <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-secondary-container font-label-sm text-label-sm font-bold shadow-sm">
-<span class="material-symbols-outlined text-[14px]">calculate</span>
-            Matemáticas
+<span class="material-symbols-outlined text-[14px]">receipt_long</span>
+            Gestión Administrativa y Tributaria
           </span>
 <span class="px-2.5 py-1 rounded-full bg-primary-container/90 backdrop-blur-md text-on-primary font-label-sm text-label-sm font-semibold">
-            4to &amp; 5to Primaria
+            4to &amp; 4to Técnico
           </span>
 </div>
 <div class="absolute bottom-2.5 left-3 flex items-center gap-2">
@@ -200,20 +200,20 @@
 <div class="p-4 flex flex-col gap-3">
 <div>
 <h2 class="font-headline-sm text-title-lg text-primary leading-snug font-bold">
-            Rúbrica de Evaluación Formativa: Comprensión de Fracciones Equivalentes
+            Rúbrica y Práctica: El Asiento Contable
           </h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
-            Matriz de desempeño analítica alineada al currículo por competencias. Evalúa representación gráfica, amplificación, simplificación y resolución de situaciones cotidianas.
+            Reglas de débito y crédito, ejercicios de libro diario con respuestas y una matriz de evaluación por niveles de dominio.
           </p>
 </div>
 <div class="bg-surface-container-low rounded-xl p-3 grid grid-cols-2 gap-2 text-on-surface">
 <div class="flex items-center gap-2">
 <div class="w-8 h-8 rounded-lg bg-secondary-fixed text-on-secondary-fixed-variant flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[18px]">edit_document</span>
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
 </div>
 <div class="flex flex-col truncate">
 <span class="font-label-sm text-label-sm text-on-surface-variant">Formato</span>
-<span class="font-label-md text-label-md font-bold truncate">PDF + DOCX • 1.1 MB</span>
+<span class="font-label-md text-label-md font-bold truncate">PDF • 4 KB</span>
 </div>
 </div>
 <div class="flex items-center gap-2">
@@ -231,26 +231,26 @@
 <span class="font-label-sm text-label-sm">Uso educativo libre y no comercial bajo atribución institucional.</span>
 </div>
 <div class="grid grid-cols-2 gap-2.5 pt-1">
-<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-[0.98]" onclick="triggerPreview('Rúbrica: Fracciones Equivalentes', 'Formato Editable DOCX + PDF de Impresión', 'matematicas')">
+<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-[0.98]" onclick="triggerPreview('Rúbrica: El Asiento Contable', 'PDF • Rúbrica y práctica de libro diario', 'gestion')">
 <span class="material-symbols-outlined text-[18px]">visibility</span>
             Vista Previa
           </button>
-<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:opacity-95 transition-all active:scale-[0.98]" onclick="triggerDownload('Rubrica_Fracciones_Equivalentes.pdf')">
+<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:opacity-95 transition-all active:scale-[0.98]" onclick="triggerDownload('Rubrica_Asiento_Contable.pdf')">
 <span class="material-symbols-outlined text-[18px]">download</span>
             Descargar
           </button>
 </div>
 </div>
 </article>
-<!-- CARD 3: Coherencia y Conectores -->
-<article class="resource-card bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md" data-cat="imprimibles" data-grade="6to" data-subject="lengua" data-type="ficha">
+<!-- CARD 3: Algoritmos -->
+<article class="resource-card bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md" data-cat="imprimibles" data-grade="4to" data-subject="informatica" data-type="ficha">
 <div class="relative w-full h-44 bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover grayscale" data-alt="High contrast clean monochrome graphic printout worksheet for school children with punctuation marks, quotation bubbles, sentence diagram trees, minimal black and white aesthetic on high brightness paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJV3bcst4Ylw7lc18uJji7L6axdjcM0lQiYKmyjOua4lBaxYHDlcjufT5brk41h0OPs8aL4N_Pjx1ypOKkBr1a7GVxNzx1Dcte9mWIY4KutCdbdKKeJ4wMtlCjcXyZYOlxPgKYQ5UlSjDa35tj7cZwsuniHZr054JZmdhwT3kqGMrwnr9WISwtRruiC2ikb6J9R0OpBK5r8b4bCww63F3HI_-VBwozu3LvXHyI74jEqETQHdKahRM"/>
+<img class="w-full h-full object-cover grayscale" data-alt="High contrast clean monochrome graphic printout worksheet for school children with punctuation marks, quotation bubbles, sentence diagram trees, minimal black and white aesthetic on high brightness paper." src="portada-gestion.svg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary-container/85 via-transparent to-transparent"></div>
 <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-sm text-label-sm font-bold shadow-sm">
-<span class="material-symbols-outlined text-[14px]">menu_book</span>
-            Lengua Española
+<span class="material-symbols-outlined text-[14px]">computer</span>
+            Informática y Comunicaciones
           </span>
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold shadow-sm">
 <span class="material-symbols-outlined text-[14px]">eco</span>
@@ -260,17 +260,17 @@
 <div class="absolute bottom-2.5 left-3 flex items-center gap-2">
 <span class="inline-flex items-center gap-1 text-on-primary font-label-sm text-label-sm drop-shadow">
 <span class="material-symbols-outlined text-[16px]">print</span>
-            6to Primaria • Ficha Imprimible sin escala de grises
+            4to Técnico • Ficha imprimible con solucionario
           </span>
 </div>
 </div>
 <div class="p-4 flex flex-col gap-3">
 <div>
 <h2 class="font-headline-sm text-title-lg text-primary leading-snug font-bold">
-            Ficha de Ejercicios Prácticos: Coherencia y Conectores en la Oración
+            Ficha de Ejercicios: Algoritmos y Pseudocódigo
           </h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
-            Diseñada especialmente en monocromo limpio para fotocopiado económico escolar. Ejercicios de conectores causales, temporales y adversativos en párrafos expositivos.
+            Ejercicios de lógica de programación con pseudocódigo y su traducción a Python. Incluye solucionario y una rúbrica sugerida para el docente.
           </p>
 </div>
 <div class="bg-surface-container-low rounded-xl p-3 grid grid-cols-2 gap-2 text-on-surface">
@@ -280,7 +280,7 @@
 </div>
 <div class="flex flex-col truncate">
 <span class="font-label-sm text-label-sm text-on-surface-variant">Formato</span>
-<span class="font-label-md text-label-md font-bold truncate">PDF Listo • 680 KB</span>
+<span class="font-label-md text-label-md font-bold truncate">PDF • 4 KB</span>
 </div>
 </div>
 <div class="flex items-center gap-2">
@@ -298,11 +298,11 @@
 <span class="font-label-sm text-label-sm">Uso educativo libre y no comercial bajo atribución institucional.</span>
 </div>
 <div class="grid grid-cols-2 gap-2.5 pt-1">
-<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-[0.98]" onclick="triggerPreview('Ficha: Coherencia y Conectores', 'Ficha Optimizada para Fotocopia B/N', 'lengua')">
+<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-[0.98]" onclick="triggerPreview('Ficha: Algoritmos y Pseudocódigo', 'Ficha imprimible con solucionario', 'informatica')">
 <span class="material-symbols-outlined text-[18px]">visibility</span>
             Vista Previa
           </button>
-<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:opacity-95 transition-all active:scale-[0.98]" onclick="triggerDownload('Conectores_Gramatica_6to_BN.pdf')">
+<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:opacity-95 transition-all active:scale-[0.98]" onclick="triggerDownload('Ficha_Pseudocodigo_Algoritmos.pdf')">
 <span class="material-symbols-outlined text-[18px]">download</span>
             Descargar
           </button>
@@ -310,43 +310,43 @@
 </div>
 </article>
 <!-- CARD 4: Línea de Tiempo Dominicanas -->
-<article class="resource-card bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md" data-cat="fichas" data-grade="5to" data-subject="sociales" data-type="infografia">
+<article class="resource-card bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md" data-cat="fichas" data-grade="5to" data-subject="enfermeria" data-type="ficha">
 <div class="relative w-full h-44 bg-surface-container overflow-hidden">
 <img class="w-full h-full object-cover" data-alt="High resolution educational infographic wall chart depicting historical timeline of Dominican Republic independence, portraits of founding fathers Juan Pablo Duarte, Francisco del Rosario Sanchez and Matias Ramon Mella with clean modern pedagogical typography and historic emblems." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh6GRNs9sGauxH-dOrE7qqVUv9l7mhLlXC9baBtJWIT6eCjabRNWJevNkGNDek4hFjCMtqzaw1tMJw_6fHRNqYws4vMDYBpIXUFmrSFPfJOzS93selR_cvwQ1qyiHWg_O32TFN4dcW0zlg8zVai-tkl9ITcvkp9Jq6lve-U46bCF_dgFVQSXnKQikSB9CzVhlfx8JtRvi1fLEeMJpbCF1LnBu5kNNEPb3CZ0EAJjwgageSv5zivn8"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent"></div>
 <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-sm text-label-sm font-bold shadow-sm">
-<span class="material-symbols-outlined text-[14px]">public</span>
-            Ciencias Sociales
+<span class="material-symbols-outlined text-[14px]">medical_services</span>
+            Enfermería
           </span>
 <span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">
-            Infografía Mural
+            Lista de Cotejo
           </span>
 </div>
 <div class="absolute bottom-2.5 left-3 flex items-center gap-2">
 <span class="inline-flex items-center gap-1 text-on-primary font-label-sm text-label-sm drop-shadow">
-<span class="material-symbols-outlined text-[16px]">view_timeline</span>
-            A3 / Tabloide • Efemérides Patrias Dominicanas
+<span class="material-symbols-outlined text-[16px]">fact_check</span>
+            1 página • Práctica de laboratorio de enfermería
           </span>
 </div>
 </div>
 <div class="p-4 flex flex-col gap-3">
 <div>
 <h2 class="font-headline-sm text-title-lg text-primary leading-snug font-bold">
-            Línea de Tiempo Ilustrada: Efemérides Dominicanas y Padres de la Patria
+            Lista de Cotejo: Higiene de Manos (5 Momentos de la OMS)
           </h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
-            Póster de aula en alta resolución vectorial. Presenta los hitos de 1844, la gesta de La Trinitaria y el ideario duartiano con infografías explicativas para el salón de clases.
+            Los 5 momentos de la OMS y una lista de cotejo para evaluar la técnica de fricción con preparado de base alcohólica durante la práctica.
           </p>
 </div>
 <div class="bg-surface-container-low rounded-xl p-3 grid grid-cols-2 gap-2 text-on-surface">
 <div class="flex items-center gap-2">
 <div class="w-8 h-8 rounded-lg bg-secondary-fixed text-secondary flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[18px]">photo_size_select_actual</span>
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
 </div>
 <div class="flex flex-col truncate">
 <span class="font-label-sm text-label-sm text-on-surface-variant">Formato</span>
-<span class="font-label-md text-label-md font-bold truncate">PDF Poster 300DPI • 5.8 MB</span>
+<span class="font-label-md text-label-md font-bold truncate">PDF • 3 KB</span>
 </div>
 </div>
 <div class="flex items-center gap-2">
@@ -364,11 +364,11 @@
 <span class="font-label-sm text-label-sm">Uso educativo libre y no comercial bajo atribución institucional.</span>
 </div>
 <div class="grid grid-cols-2 gap-2.5 pt-1">
-<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-[0.98]" onclick="triggerPreview('Póster: Efemérides Dominicanas', 'PDF Vectorial en Gran Formato (A3/Poster)', 'sociales')">
+<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-[0.98]" onclick="triggerPreview('Lista de Cotejo: Higiene de Manos', 'PDF • 1 Página • Práctica de laboratorio', 'enfermeria')">
 <span class="material-symbols-outlined text-[18px]">visibility</span>
             Vista Previa
           </button>
-<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:opacity-95 transition-all active:scale-[0.98]" onclick="triggerDownload('Linea_Tiempo_Dominicana_Poster.pdf')">
+<button class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:opacity-95 transition-all active:scale-[0.98]" onclick="triggerDownload('Lista_Cotejo_Higiene_Manos_OMS.pdf')">
 <span class="material-symbols-outlined text-[18px]">download</span>
             Descargar
           </button>
@@ -383,7 +383,7 @@
 </div>
 <h3 class="font-headline-sm text-title-md text-primary font-bold">No se encontraron recursos</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1 mb-4">
-      Prueba ajustando los filtros de materia, grado o borrando el término de búsqueda actual.
+      Prueba ajustando los filtros de área, nivel o borrando el término de búsqueda actual.
     </p>
 <button class="px-4 py-2 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high" id="reset-filters-btn">
       Restablecer todos los filtros
@@ -677,11 +677,11 @@
       }, 3000);
     };
   </script>
-</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(22,91,51,0.06)]" data-active-classes="text-primary-container font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="inicio" href="index.html"><span class="material-symbols-outlined text-[24px]">school</span><span class="font-label-sm text-label-sm">Inicio</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="publicaciones" href="publicaciones.html"><span class="material-symbols-outlined text-[24px]">menu_book</span><span class="font-label-sm text-label-sm">Artículos</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 transition-colors text-primary-container font-semibold" data-path="recursos-didacticos" href="recursos.html"><span class="material-symbols-outlined text-[24px]">folder_open</span><span class="font-label-sm text-label-sm">Recursos</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="actividades-pedagogicas" href="actividades.html"><span class="material-symbols-outlined text-[24px]">extension</span><span class="font-label-sm text-label-sm">Actividades</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="perfil-docente" href="panel.html"><span class="material-symbols-outlined text-[24px]">person_outline</span><span class="font-label-sm text-label-sm">Perfil</span></a></div></nav><script src="db.js"></script>
-<script src="profile-loader.js"></script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(22,91,51,0.06)]" data-active-classes="text-primary-container font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="inicio" href="index.html"><span class="material-symbols-outlined text-[24px]">school</span><span class="font-label-sm text-label-sm">Inicio</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="publicaciones" href="publicaciones.html"><span class="material-symbols-outlined text-[24px]">computer</span><span class="font-label-sm text-label-sm">Artículos</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 transition-colors text-primary-container font-semibold" data-path="recursos-didacticos" href="recursos.html"><span class="material-symbols-outlined text-[24px]">folder_open</span><span class="font-label-sm text-label-sm">Recursos</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="actividades-pedagogicas" href="actividades.html"><span class="material-symbols-outlined text-[24px]">extension</span><span class="font-label-sm text-label-sm">Actividades</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="perfil-docente" href="panel.html"><span class="material-symbols-outlined text-[24px]">person_outline</span><span class="font-label-sm text-label-sm">Perfil</span></a></div></nav><script src="db.js?v=etp2"></script>
+<script src="profile-loader.js?v=etp2"></script>
 <script>document.addEventListener('DOMContentLoaded', () => window.applyTeacherProfile());</script>
-<script src="descargas.js"></script>
-<script src="buscar.js"></script>
-<script src="edit-profile.js"></script>
-<script src="tema-navidad.js"></script>
+<script src="descargas.js?v=etp2"></script>
+<script src="buscar.js?v=etp2"></script>
+<script src="edit-profile.js?v=etp2"></script>
+<script src="tema-navidad.js?v=etp2"></script>
 </body></html>

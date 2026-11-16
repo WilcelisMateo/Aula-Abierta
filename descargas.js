@@ -2,10 +2,10 @@
 (function () {
   'use strict';
   var REC = [
-    { k: ['hidrolog', 'ciclo del agua'], file: 'Ciclo_Hidrologico_Ficha5to.pdf', q: 'hidrológico', title: 'Guía didáctica y ficha de experimento: El ciclo hidrológico', desc: 'Ciencias Naturales · 5to · incluye rúbrica' },
-    { k: ['fraccion', 'rubrica'], file: 'Rubrica_Fracciones_Equivalentes.pdf', q: 'fracciones', title: 'Rúbrica de evaluación formativa: fracciones equivalentes', desc: 'Matemática · 4to y 5to' },
-    { k: ['conector', 'coherencia'], file: 'Conectores_Gramatica_6to_BN.pdf', q: 'conectores', title: 'Ficha de ejercicios: coherencia y conectores', desc: 'Lengua Española · 6to · con solucionario' },
-    { k: ['linea tiempo', 'efemerides', 'padres de la patria'], file: 'Linea_Tiempo_Dominicana_Poster.pdf', q: 'efemérides', title: 'Línea de tiempo ilustrada: efemérides dominicanas', desc: 'Ciencias Sociales · 5to · afiche' }
+    { k: ['compost', 'suelo'], file: 'Guia_Compost_Suelo_Finca.pdf', q: 'compost', title: 'Guía práctica: compost y manejo del suelo', desc: 'Agropecuaria · 4to · con registro y rúbrica' },
+    { k: ['asiento', 'contable', 'partida doble'], file: 'Rubrica_Asiento_Contable.pdf', q: 'asiento contable', title: 'Rúbrica y práctica: el asiento contable', desc: 'Gestión Administrativa y Tributaria · 4to' },
+    { k: ['pseudocodigo', 'algoritmo'], file: 'Ficha_Pseudocodigo_Algoritmos.pdf', q: 'algoritmos', title: 'Ficha de ejercicios: algoritmos y pseudocódigo', desc: 'Informática y Comunicaciones · 4to · con solucionario' },
+    { k: ['higiene de manos', 'higiene manos', 'lista cotejo', 'cotejo'], file: 'Lista_Cotejo_Higiene_Manos_OMS.pdf', q: 'higiene de manos', title: 'Lista de cotejo: higiene de manos (OMS)', desc: 'Enfermería · 5to · 5 momentos de la OMS' }
   ];
   window.SABERUP_RECURSOS = REC;
 
@@ -28,6 +28,10 @@
     document.body.appendChild(a); a.click(); a.remove();
     toast('⬇️ Descargando: ' + a.download);
   }
+  function recFor(subject) {
+    var t = norm(subject || '');
+    return /agropec/.test(t) ? REC[0] : /gestion|tributar/.test(t) ? REC[1] : /informat/.test(t) ? REC[2] : /enfermer/.test(t) ? REC[3] : REC[0];
+  }
   function byText(text) { var r = fileFor(text); if (r) dl(r); return !!r; }
   window.SaberUpDescargas = { byText: byText, toast: toast };
 
@@ -39,7 +43,7 @@
     };
     window.simulateResourceDownload = function (btn) {
       var old = btn.innerHTML;
-      dl(REC[0]);
+      dl(recFor(window.__saberupArt && window.__saberupArt.subject));
       btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check_circle</span> <span>¡Descargado!</span>';
       setTimeout(function () { btn.innerHTML = old; }, 2200);
     };
@@ -63,6 +67,19 @@
         });
       }
     });
+    // Lectura: la tarjeta de descarga muestra el recurso del área del artículo
+    if (/lectura\.html$/.test(location.pathname)) {
+      var tries = 0, iv = setInterval(function () {
+        if (++tries > 30) return clearInterval(iv);
+        if (!window.__saberupArt) return;
+        clearInterval(iv);
+        var r = recFor(window.__saberupArt.subject);
+        Array.prototype.forEach.call(document.querySelectorAll('span'), function (sp) {
+          if (sp.textContent === 'Recurso descargable del área') sp.textContent = r.title;
+          else if (sp.textContent === 'Guía, rúbrica o lista de cotejo imprimible · PDF') sp.textContent = r.desc + ' · PDF';
+        });
+      }, 300);
+    }
     // Recursos: abrir con ?q=… (desde el buscador)
     var q = new URLSearchParams(location.search).get('q'), input = document.getElementById('resource-search');
     if (q && input) { input.value = q; input.dispatchEvent(new Event('input', { bubbles: true })); }

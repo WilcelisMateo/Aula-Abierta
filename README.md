@@ -4,7 +4,7 @@ Blog educativo para docentes de nivel primario y secundario en República Domini
 
 ## Pantallas
 
-- **Inicio** — Página principal con artículos destacados y áreas curriculares
+- **Inicio** — Página principal con artículos destacados y áreas técnicas (Agropecuaria, Gestión Administrativa y Tributaria, Informática y Comunicaciones, Enfermería)
 - **Publicaciones** — Listado de publicaciones educativas
 - **Lectura** — Vista de lectura de artículos
 - **Recursos** — Recursos didácticos descargables

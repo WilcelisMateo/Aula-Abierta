@@ -10,37 +10,37 @@
   'use strict';
 
   var BANCO = {
-    'Ciencias Naturales': { icono: 'science', preguntas: [
-      { q: '¿Qué gas toman las plantas del aire para hacer la fotosíntesis?', o: ['Oxígeno', 'Dióxido de carbono', 'Nitrógeno', 'Hidrógeno'], c: 1, e: 'Con luz solar, agua y dióxido de carbono fabrican su alimento y liberan oxígeno.' },
-      { q: 'El paso del agua líquida a vapor se llama…', o: ['Condensación', 'Precipitación', 'Evaporación', 'Solidificación'], c: 2, e: 'El calor del Sol evapora el agua de mares y ríos: es el inicio del ciclo del agua.' },
-      { q: '¿Cuál es el planeta más cercano al Sol?', o: ['Venus', 'Mercurio', 'Marte', 'Tierra'], c: 1, e: 'Mercurio es el más cercano al Sol y también el más pequeño del sistema solar.' },
-      { q: '¿Qué órgano bombea la sangre por todo el cuerpo?', o: ['El pulmón', 'El hígado', 'El corazón', 'El estómago'], c: 2, e: 'El corazón es un músculo que impulsa la sangre a través de arterias y venas.' },
-      { q: 'El hielo es agua en estado…', o: ['Líquido', 'Gaseoso', 'Sólido', 'Plasma'], c: 2, e: 'Al enfriarse a 0 °C el agua se solidifica y forma hielo.' },
-      { q: '¿Cuál de estos animales es un mamífero?', o: ['Tiburón', 'Delfín', 'Cocodrilo', 'Pulpo'], c: 1, e: 'El delfín respira aire con pulmones y alimenta a sus crías con leche, aunque vive en el mar.' }
+    'Agropecuaria': { icono: 'agriculture', preguntas: [
+      { q: '¿Qué nutriente principal aportan los materiales verdes al compost?', o: ['Nitrógeno', 'Calcio', 'Hierro', 'Sodio'], c: 0, e: 'Los restos frescos aportan nitrógeno; los secos aportan carbono.' },
+      { q: '¿Qué pH del suelo es el más favorable para la mayoría de los cultivos?', o: ['Muy ácido (3 a 4)', 'Ligeramente ácido a neutro (6 a 7)', 'Muy alcalino (9 a 10)', 'Cualquier pH sirve igual'], c: 1, e: 'En ese rango las plantas aprovechan mejor los nutrientes.' },
+      { q: '¿Qué práctica ayuda a conservar la fertilidad del suelo y a reducir plagas?', o: ['Rotación de cultivos', 'Sembrar siempre lo mismo', 'Dejar el suelo sin cobertura', 'Quemar los residuos'], c: 0, e: 'Alternar cultivos equilibra los nutrientes y rompe el ciclo de las plagas.' },
+      { q: 'El riego por goteo se caracteriza por…', o: ['Inundar toda la parcela', 'Aplicar el agua gota a gota cerca de la raíz', 'Regar solo con lluvia', 'Usar mangueras sin control'], c: 1, e: 'Ahorra agua porque la entrega justo donde la planta la necesita.' },
+      { q: '¿Cuál de estos es un cultivo de ciclo corto?', o: ['Cacao', 'Mango', 'Tomate', 'Palma de coco'], c: 2, e: 'El tomate se cosecha en pocos meses; los otros son cultivos perennes.' },
+      { q: 'En las Buenas Prácticas Agrícolas, ¿para qué sirve el registro de campo?', o: ['Para decorar la finca', 'Para documentar siembra, aplicaciones y cosecha', 'Para vender más caro', 'No sirve'], c: 1, e: 'Permite la trazabilidad y mejora la calidad e inocuidad.' }
     ]},
-    'Matemática': { icono: 'calculate', preguntas: [
-      { q: '¿Cuánto es 7 × 8?', o: ['54', '56', '63', '48'], c: 1, e: '7 × 8 = 56. Truco: 5, 6, 7, 8 → 56 = 7 × 8.' },
-      { q: '¿Cuál es la mitad de 250?', o: ['115', '120', '125', '150'], c: 2, e: 'Dividir entre 2: 250 ÷ 2 = 125.' },
-      { q: 'Los ángulos interiores de un triángulo suman…', o: ['90°', '180°', '270°', '360°'], c: 1, e: 'En cualquier triángulo los tres ángulos suman siempre 180°.' },
-      { q: '¿Cuánto es 3/4 de 20?', o: ['5', '12', '15', '16'], c: 2, e: '20 ÷ 4 = 5 y 5 × 3 = 15.' },
-      { q: '¿Cuál es el perímetro de un cuadrado de 6 cm de lado?', o: ['12 cm', '24 cm', '36 cm', '18 cm'], c: 1, e: 'El perímetro suma los 4 lados: 6 + 6 + 6 + 6 = 24 cm.' },
-      { q: '¿Cuánto es el 15 % de 200?', o: ['15', '20', '30', '35'], c: 2, e: '10 % de 200 es 20 y 5 % es 10; 20 + 10 = 30.' }
+    'Gestión Administrativa y Tributaria': { icono: 'receipt_long', preguntas: [
+      { q: 'En contabilidad, la partida doble significa que…', o: ['Se registra todo dos veces al mes', 'Todo débito tiene un crédito de igual valor', 'Solo se usan dos cuentas', 'Se duplica el inventario'], c: 1, e: 'Por eso los asientos siempre quedan balanceados.' },
+      { q: '¿Cuál es la tasa general del ITBIS en la República Dominicana?', o: ['8 %', '12 %', '18 %', '25 %'], c: 2, e: 'La tasa general es del 18 %, con algunas excepciones.' },
+      { q: '¿Qué institución autoriza los números de comprobante fiscal (NCF)?', o: ['DGII', 'Banco Central', 'TSS', 'MINERD'], c: 0, e: 'La Dirección General de Impuestos Internos administra los impuestos internos.' },
+      { q: 'La ecuación contable básica es…', o: ['Activo = Pasivo + Patrimonio', 'Activo = Gastos + Ingresos', 'Pasivo = Activo + Patrimonio', 'Patrimonio = Pasivo × Activo'], c: 0, e: 'Los bienes de la empresa se financian con deudas o con aportes propios.' },
+      { q: '¿Cuál es el documento fuente de una venta?', o: ['El balance general', 'La factura', 'El libro mayor', 'El estado de resultados'], c: 1, e: 'La factura respalda la operación y da origen al asiento.' },
+      { q: '¿Qué tipo de cuentas aumentan por el débito?', o: ['Pasivos e ingresos', 'Activos y gastos', 'Solo el patrimonio', 'Ninguna'], c: 1, e: 'Activos y gastos aumentan por el débito; pasivos, patrimonio e ingresos por el crédito.' }
     ]},
-    'Lengua Española': { icono: 'menu_book', preguntas: [
-      { q: '¿Cuál de estas palabras es aguda?', o: ['Árbol', 'Canción', 'Teléfono', 'Mesa'], c: 1, e: 'Can-CIÓN: la sílaba más fuerte es la última. Termina en n y lleva tilde.' },
-      { q: 'Un sinónimo de «feliz» es…', o: ['Triste', 'Cansado', 'Contento', 'Molesto'], c: 2, e: 'Los sinónimos son palabras con significado parecido: feliz y contento.' },
-      { q: '¿Cuál palabra está bien escrita?', o: ['Exivir', 'Exibir', 'Exhibir', 'Ehxibir'], c: 2, e: 'Se escribe «exhibir», con h después de la x.' },
-      { q: 'Un antónimo de «generoso» es…', o: ['Amable', 'Tacaño', 'Valiente', 'Alegre'], c: 1, e: 'Los antónimos significan lo contrario: generoso ↔ tacaño.' },
-      { q: 'En «El niño corre rápido», ¿cuál es el verbo?', o: ['niño', 'El', 'corre', 'rápido'], c: 2, e: 'El verbo expresa la acción: corre.' },
-      { q: 'En español, una pregunta se escribe entre los signos…', o: ['¿ ?', '¡ !', '« »', '( )'], c: 0, e: 'Las preguntas llevan signo de apertura (¿) y de cierre (?).' }
+    'Informática y Comunicaciones': { icono: 'computer', preguntas: [
+      { q: '¿Qué es un algoritmo?', o: ['Un virus informático', 'Una secuencia ordenada de pasos para resolver un problema', 'Un tipo de monitor', 'Un lenguaje de marcado'], c: 1, e: 'Es la base de cualquier programa.' },
+      { q: '¿Cuál es un ejemplo de estructura repetitiva?', o: ['si… entonces', 'mientras… / para…', 'leer un dato', 'escribir un resultado'], c: 1, e: 'Los ciclos repiten instrucciones mientras se cumple una condición.' },
+      { q: '¿Qué significan las siglas CPU?', o: ['Unidad Central de Procesamiento', 'Control Personal de Usuario', 'Código Principal Universal', 'Computadora Portátil Ultra'], c: 0, e: 'Es el procesador: ejecuta las instrucciones del equipo.' },
+      { q: 'La regla de respaldo 3-2-1 indica…', o: ['3 discos, 2 clics y 1 nube', '3 copias, en 2 tipos de medios, con 1 fuera del lugar', '3 contraseñas, 2 usuarios y 1 antivirus', '3 equipos, 2 redes y 1 servidor'], c: 1, e: 'Así proteges tus datos aunque falle un medio o ocurra un desastre local.' },
+      { q: '¿Qué es el phishing?', o: ['Un tipo de respaldo', 'Un engaño para robar datos haciéndose pasar por una entidad de confianza', 'Una red inalámbrica', 'Un programa de edición'], c: 1, e: 'Desconfía de mensajes urgentes y enlaces dudosos.' },
+      { q: '¿Qué memoria pierde su contenido al apagar el equipo?', o: ['El disco duro', 'La memoria RAM', 'Una memoria USB', 'El disco SSD'], c: 1, e: 'La RAM es memoria temporal de trabajo.' }
     ]},
-    'Ciencias Sociales': { icono: 'public', preguntas: [
-      { q: '¿Cuál es la capital de la República Dominicana?', o: ['Santiago', 'La Romana', 'Santo Domingo', 'Puerto Plata'], c: 2, e: 'Santo Domingo, fundada en 1496, es la ciudad más antigua de América con vida continua.' },
-      { q: '¿Qué día celebramos la Independencia Nacional?', o: ['16 de agosto', '27 de febrero', '24 de septiembre', '12 de octubre'], c: 1, e: 'El 27 de febrero de 1844 se proclamó la independencia frente a Haití.' },
-      { q: '¿Quiénes son los Padres de la Patria?', o: ['Duarte, Sánchez y Mella', 'Luperón, Gregorio y Heureaux', 'Trujillo, Balaguer y Bosch', 'Colón, Ovando y Cortés'], c: 0, e: 'Juan Pablo Duarte, Francisco del Rosario Sánchez y Matías Ramón Mella.' },
-      { q: '¿Cuál es el pico más alto del Caribe?', o: ['Pico Duarte', 'Loma Redonda', 'Monte Isabel de Torres', 'Loma Miranda'], c: 0, e: 'El Pico Duarte mide unos 3,098 metros y está en la Cordillera Central.' },
-      { q: '¿Con qué país compartimos la isla La Española?', o: ['Cuba', 'Jamaica', 'Puerto Rico', 'Haití'], c: 3, e: 'La isla se divide entre la República Dominicana y Haití.' },
-      { q: '¿Qué fecha recuerda la Guerra de la Restauración?', o: ['16 de agosto', '27 de febrero', '6 de enero', '1 de mayo'], c: 0, e: 'El 16 de agosto de 1863 se inició la Restauración de la República.' }
+    'Enfermería': { icono: 'medical_services', preguntas: [
+      { q: '¿Cuántos momentos de higiene de manos define la OMS?', o: ['3', '4', '5', '7'], c: 2, e: 'Son 5 momentos, desde antes del contacto con el paciente hasta después del contacto con su entorno.' },
+      { q: 'La frecuencia cardíaca normal de un adulto en reposo es…', o: ['20 a 40 lpm', '60 a 100 lpm', '120 a 160 lpm', '200 lpm'], c: 1, e: 'Más de 100 lpm es taquicardia y menos de 60 es bradicardia.' },
+      { q: 'La fricción con preparado de base alcohólica dura…', o: ['2 a 3 segundos', '5 segundos', '20 a 30 segundos', '5 minutos'], c: 2, e: 'Cubre todas las superficies de las manos hasta que se sequen.' },
+      { q: 'La temperatura corporal normal de un adulto ronda…', o: ['30 a 32 °C', '36.1 a 37.2 °C', '38.5 a 39.5 °C', '40 °C'], c: 1, e: 'Por encima de 38 °C se considera fiebre.' },
+      { q: '¿Qué medida previene las infecciones cruzadas entre pacientes?', o: ['Compartir los guantes', 'La higiene de manos', 'Usar la misma bata todo el turno', 'Evitar la mascarilla'], c: 1, e: 'Es la medida más simple y eficaz.' },
+      { q: 'La presión arterial normal en un adulto es…', o: ['Menor de 120/80 mmHg', '200/120 mmHg', '80/40 mmHg', 'Mayor de 180/110 mmHg'], c: 0, e: 'Valores persistentes más altos requieren valoración.' }
     ]}
   };
 
@@ -123,7 +123,7 @@
   function menu() {
     G = null;
     var h = '<span class="sg-badge"><span class="material-symbols-outlined" style="font-size:16px" aria-hidden="true">sports_esports</span>Aprende jugando</span>' +
-      '<h2>Reto SaberUp</h2><p>Responde, suma puntos y conserva tus 3 vidas. Después de cada pregunta aprenderás por qué.</p>' +
+      '<h2>Reto SaberUp</h2><p>Responde, suma puntos y conserva tus 3 vidas. Aprenderás por qué después de cada pregunta.</p>' +
       '<div style="margin-top:8px">' + (window.SaberUpProgreso ? SaberUpProgreso.bloom(['Recordar', 'Comprender']) : '') + '</div>' +
       (window.SaberUpProgreso ? SaberUpProgreso.card(false) : '') +
       '<div class="sg-grid">';

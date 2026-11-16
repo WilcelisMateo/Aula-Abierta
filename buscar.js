@@ -3,7 +3,7 @@
 (function () {
   'use strict';
   var STATIC = [
-    ['Centro de Actividades', 'Juegos, mini-examen, autoevaluación y comentarios', 'actividades.html', 'extension', 'juegos aprender actividades bloom insignias niveles'],
+    ['Centro de Actividades', 'Juegos técnicos, mini-examen, autoevaluación y comentarios', 'actividades.html', 'extension', 'juegos aprender actividades bloom insignias niveles'],
     ['Reto SaberUp', 'Preguntas con vidas, puntos y rachas', 'index.html#juego-saberup', 'sports_esports', 'juego quiz preguntas reto'],
     ['Memoria de parejas', 'Une conceptos con su significado', 'actividades.html#memoria', 'extension', 'memoria parejas juego'],
     ['Arrastra y clasifica', 'Clasifica tarjetas en el grupo correcto', 'actividades.html#clasificar', 'swap_horiz', 'arrastrar soltar clasificar'],
@@ -12,13 +12,13 @@
     ['Mini-examen con rúbrica', 'Evaluación por tema', 'actividades.html#examen', 'assignment', 'examen evaluacion rubrica prueba'],
     ['¿Qué aprendí hoy? (autoevaluación)', 'Reflexiona sobre tu aprendizaje', 'actividades.html#autoevaluacion', 'psychology', 'autoevaluacion reflexion'],
     ['Danos tu opinión', 'Comentarios sobre la plataforma', 'actividades.html#comentarios', 'rate_review', 'comentarios opinion sugerencias'],
-    ['Recursos didácticos', 'Guías, rúbricas y fichas descargables', 'recursos.html', 'folder_open', 'recursos descargas guias fichas'],
+    ['Recursos técnicos', 'Guías, rúbricas y fichas descargables', 'recursos.html', 'folder_open', 'recursos descargas guias fichas'],
     ['Biblioteca Multimedia', 'Tus archivos subidos', 'biblioteca.html', 'perm_media', 'biblioteca archivos multimedia subir'],
     ['Publicaciones', 'Todos los artículos del blog', 'publicaciones.html', 'article', 'articulos publicaciones blog'],
-    ['Ciencias Naturales', 'Artículos del área', 'publicaciones.html?subject=Ciencias%20Naturales', 'science', 'ciencias naturales biologia'],
-    ['Matemática', 'Artículos del área', 'publicaciones.html?subject=Matem%C3%A1tica', 'calculate', 'matematica numeros fracciones'],
-    ['Lengua Española', 'Artículos del área', 'publicaciones.html?subject=Lengua%20Espa%C3%B1ola', 'menu_book', 'lengua espanola lectura gramatica'],
-    ['Ciencias Sociales', 'Artículos del área', 'publicaciones.html?subject=Ciencias%20Sociales', 'public', 'sociales historia geografia'],
+    ['Agropecuaria', 'Artículos del área', 'publicaciones.html?subject=Agropecuaria', 'agriculture', 'agropecuaria agricultura suelo compost cultivos finca'],
+    ['Gestión Administrativa y Tributaria', 'Artículos del área', 'publicaciones.html?subject=Gesti%C3%B3n%20Administrativa%20y%20Tributaria', 'receipt_long', 'gestion administrativa tributaria contabilidad itbis ncf impuestos'],
+    ['Informática y Comunicaciones', 'Artículos del área', 'publicaciones.html?subject=Inform%C3%A1tica%20y%20Comunicaciones', 'computer', 'informatica comunicaciones programacion redes ciberseguridad'],
+    ['Enfermería', 'Artículos del área', 'publicaciones.html?subject=Enfermer%C3%ADa', 'medical_services', 'enfermeria salud cuidado pacientes signos vitales bioseguridad'],
     ['Mi perfil', 'Cambia tu foto, nombre y datos', 'perfil.html', 'person', 'perfil foto nombre docente']
   ];
   var cache = null, ov = null;
@@ -90,7 +90,7 @@
     document.body.appendChild(ov);
     var inp = ov.querySelector('#bs-q'), res = ov.querySelector('#bs-res'), timer = 0;
     function home() {
-      res.innerHTML = '<p class="bs-h">Prueba buscando:</p><div class="bs-chips">' + ['ciclo del agua', 'fracciones', 'Duarte', 'sopa de letras', 'rúbrica', 'conectores'].map(function (c) { return '<button type="button" class="bs-chip">' + c + '</button>'; }).join('') + '</div>';
+      res.innerHTML = '<p class="bs-h">Prueba buscando:</p><div class="bs-chips">' + ['compost', 'asiento contable', 'ITBIS', 'algoritmos', 'signos vitales', 'sopa de letras'].map(function (c) { return '<button type="button" class="bs-chip">' + c + '</button>'; }).join('') + '</div>';
       Array.prototype.forEach.call(res.querySelectorAll('.bs-chip'), function (b) { b.addEventListener('click', function () { inp.value = b.textContent; draw(); inp.focus(); }); });
     }
     function draw() {
@@ -100,7 +100,7 @@
         var sn = snippet(it, words.map(norm));
         return '<a class="bs-r" href="' + esc(it.u) + '"><span class="material-symbols-outlined" aria-hidden="true">' + esc(it.icon) + '</span><span><span class="bs-k">' + esc(it.kind) + '</span><strong>' + hl(it.t, words) + '</strong>' +
           (it.d ? '<small>' + hl(it.d, words) + '</small>' : '') + (sn ? '<small>' + hl(sn, words) + '</small>' : '') + '</span></a>';
-      }).join('') : '<p class="bs-h">No encontré resultados para «' + esc(q) + '». Prueba con otra palabra, por ejemplo el nombre de una asignatura.</p>';
+      }).join('') : '<p class="bs-h">No encontré resultados para «' + esc(q) + '». Prueba con otra palabra, por ejemplo el nombre de un área técnica.</p>';
     }
     function close() { ov.remove(); ov = null; document.body.style.overflow = ''; }
     ov.addEventListener('click', function (e) { if (e.target === ov) close(); });

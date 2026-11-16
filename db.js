@@ -86,310 +86,154 @@ class StorageService {
     });
   }
 
+  // ── Contenido inicial: áreas de la Educación Técnico Profesional (ETP) ──
+  _ficha(modulo, competencia, indicador, duracion) {
+    return `<div style="background:linear-gradient(135deg,#dcefe0,#fff3cd);padding:20px 24px;border-radius:12px;margin-bottom:24px;border-left:4px solid #165b33;">
+      <p style="margin:0 0 8px;font-weight:700;color:#165b33;">📋 Ficha Técnica — Educación Técnico Profesional</p>
+      <p style="margin:4px 0;"><strong>Módulo formativo:</strong> ${modulo}</p>
+      <p style="margin:4px 0;"><strong>Competencia:</strong> ${competencia}</p>
+      <p style="margin:4px 0;"><strong>Indicador de logro:</strong> ${indicador}</p>
+      <p style="margin:4px 0;"><strong>Duración sugerida:</strong> ${duracion}</p></div>`;
+  }
+
+  _contentSeeds() {
+    const A = 'Lic. Wilcelis Mateo', R = 'Docente de Educación Técnico Profesional';
+    const base = (o) => Object.assign({ author: A, role: R, status: 'published', views: 0 }, o);
+    const articles = [
+      base({ id: 'art-compost-suelo', title: 'Compost y manejo del suelo en la finca escolar', subject: 'Agropecuaria', grade: 'Bachillerato Técnico • 4to', readTime: 6, views: 1820,
+        summary: 'Cómo transformar residuos orgánicos en abono, mejorar la fertilidad del suelo y aplicar prácticas sostenibles en la finca escolar.',
+        coverImage: 'portada-agropecuaria.svg', coverAlt: 'Portada del área Agropecuaria', createdAt: new Date('2026-10-14T08:30:00Z').getTime(),
+        tags: ['Agropecuaria', 'Compost', 'SuelosSostenibles'],
+        content: this._ficha('Producción vegetal y manejo del suelo', 'Aplica técnicas de producción agrícola sostenible', 'Elabora y monitorea una pila de compost con registro técnico.', '3 sesiones de 90 min') +
+          `<h2>1. ¿Por qué compostar?</h2><p>El compostaje convierte restos de cocina y de la finca en abono mediante la descomposición aeróbica. Mejora la estructura del suelo, su capacidad de retener agua y la vida microbiana, y reduce el gasto en fertilizantes.</p>
+          <h2>2. Receta básica</h2><ul><li><strong>Material verde</strong> (restos frescos de frutas, vegetales, césped): aporta nitrógeno.</li><li><strong>Material seco</strong> (hojas, paja, cartón): aporta carbono. Usa unas 2 a 3 partes secas por 1 verde, en volumen.</li><li>Mantén la humedad como una esponja escurrida y voltea la pila cada 7 a 10 días.</li><li>Evita carnes, grasas, lácteos y heces de mascotas.</li></ul>
+          <h2>3. Registro de la práctica</h2><p>Anota cada semana: fecha, temperatura, humedad, olor y acciones realizadas. Un compost bien manejado se calienta entre 55 y 65 °C en su fase inicial y huele a tierra de bosque cuando está listo.</p>` }),
+      base({ id: 'art-bpa-borrador', title: 'Buenas Prácticas Agrícolas (BPA) en cultivos de ciclo corto', subject: 'Agropecuaria', grade: 'Bachillerato Técnico • 5to', readTime: 5, status: 'draft',
+        summary: 'Registro, higiene y manejo seguro de insumos en la producción de cultivos de ciclo corto.', coverImage: 'portada-agropecuaria.svg', coverAlt: 'Portada del área Agropecuaria', createdAt: new Date('2026-10-15T09:00:00Z').getTime(),
+        tags: ['BPA', 'CultivosCicloCorto', 'Inocuidad'],
+        content: '<h2>Producir con calidad e inocuidad</h2><p>Borrador en construcción. Pendiente de anexar la lista de cotejo de campo y la rúbrica del módulo.</p>' }),
+      base({ id: 'art-asiento-contable', title: 'El asiento contable paso a paso: del documento fuente al libro diario', subject: 'Gestión Administrativa y Tributaria', grade: 'Bachillerato Técnico • 4to', readTime: 7, views: 1430,
+        summary: 'Aprende a registrar operaciones comerciales aplicando la partida doble, sin perderte en el proceso.', coverImage: 'portada-gestion.svg', coverAlt: 'Portada del área Gestión Administrativa y Tributaria', createdAt: new Date('2026-10-20T10:00:00Z').getTime(),
+        tags: ['Contabilidad', 'PartidaDoble', 'LibroDiario'],
+        content: this._ficha('Contabilidad general y registro de operaciones', 'Registra operaciones comerciales según principios contables', 'Registra en el libro diario operaciones aplicando la partida doble.', '4 sesiones de 90 min') +
+          `<h2>1. La partida doble</h2><p>Toda operación afecta al menos dos cuentas y el total de los débitos siempre es igual al total de los créditos.</p>
+          <h2>2. Pasos para registrar</h2><ol><li>Identifica el documento fuente (factura, recibo, cheque).</li><li>Analiza qué cuentas se afectan.</li><li>Clasifícalas: activo, pasivo, patrimonio, ingreso o gasto.</li><li>Aplica las reglas de débito y crédito.</li><li>Registra en el libro diario: fecha, cuentas, monto y concepto.</li></ol>
+          <h2>3. Ejemplo</h2><p>Compra de mercancía al contado por RD$ 10,000:</p><ul><li><strong>Débito:</strong> Inventario de mercancías, RD$ 10,000</li><li><strong>Crédito:</strong> Efectivo en caja, RD$ 10,000</li></ul>
+          <p>Recuerda: los activos y los gastos aumentan por el débito; los pasivos, el patrimonio y los ingresos aumentan por el crédito.</p>` }),
+      base({ id: 'art-itbis-ncf', title: 'ITBIS y comprobantes fiscales (NCF): lo básico para el módulo tributario', subject: 'Gestión Administrativa y Tributaria', grade: 'Bachillerato Técnico • 5to', readTime: 6, views: 980,
+        summary: 'Calcula el ITBIS de una venta y reconoce para qué sirven los comprobantes fiscales.', coverImage: 'portada-gestion.svg', coverAlt: 'Portada del área Gestión Administrativa y Tributaria', createdAt: new Date('2026-10-24T10:00:00Z').getTime(),
+        tags: ['ITBIS', 'NCF', 'DGII'],
+        content: this._ficha('Obligaciones tributarias', 'Cumple obligaciones fiscales de una empresa', 'Calcula el ITBIS de una venta e identifica el tipo de comprobante fiscal.', '3 sesiones de 90 min') +
+          `<h2>1. ¿Qué es el ITBIS?</h2><p>Es el Impuesto sobre Transferencias de Bienes Industrializados y Servicios. La tasa general es del 18 %, aunque algunos bienes y servicios están exentos o tienen un tratamiento distinto.</p>
+          <p><strong>Ejemplo:</strong> precio base RD$ 1,000 → ITBIS (18 %) = RD$ 180 → total RD$ 1,180.</p>
+          <h2>2. Comprobantes fiscales</h2><p>El Número de Comprobante Fiscal (NCF) lo autoriza la DGII y respalda ventas, compras y gastos. Por ejemplo, la factura de crédito fiscal (serie B01) y la factura de consumo (serie B02).</p>
+          <h2>3. Declaración</h2><p>El ITBIS se declara mensualmente, en el formulario IT-1, dentro de los primeros 20 días del mes siguiente. Verifica siempre la norma vigente en dgii.gov.do.</p>` }),
+      base({ id: 'art-algoritmos', title: 'Pensamiento algorítmico: del pseudocódigo a tu primer programa', subject: 'Informática y Comunicaciones', grade: 'Bachillerato Técnico • 4to', readTime: 7, views: 1610,
+        summary: 'Aprende a diseñar algoritmos en pseudocódigo y conviértelos en un programa funcional.', coverImage: 'portada-informatica.svg', coverAlt: 'Portada del área Informática y Comunicaciones', createdAt: new Date('2026-10-28T10:00:00Z').getTime(),
+        tags: ['Programación', 'Algoritmos', 'Pseudocódigo'],
+        content: this._ficha('Lógica de programación', 'Desarrolla soluciones informáticas a problemas simples', 'Diseña algoritmos en pseudocódigo y los traduce a un lenguaje de programación.', '4 sesiones de 90 min') +
+          `<h2>1. ¿Qué es un algoritmo?</h2><p>Es una secuencia finita y ordenada de pasos para resolver un problema. Sus estructuras básicas son la secuencial, la condicional (si… entonces) y la repetitiva (mientras… / para…).</p>
+          <h2>2. Ejemplo: calcular el total con ITBIS</h2><pre><code>Inicio
+  Leer precio
+  itbis ← precio * 0.18
+  total ← precio + itbis
+  Escribir total
+Fin</code></pre>
+          <h2>3. Tu primer programa (Python)</h2><pre><code>precio = float(input("Precio: "))
+itbis = precio * 0.18
+print("Total:", precio + itbis)</code></pre><p>Prueba con varios valores y verifica que el resultado sea el esperado antes de seguir.</p>` }),
+      base({ id: 'art-ciberseguridad', title: 'Ciberseguridad en el taller: contraseñas, phishing y respaldo 3-2-1', subject: 'Informática y Comunicaciones', grade: 'Módulo formativo • 5to', readTime: 6, views: 1210,
+        summary: 'Hábitos simples que protegen tus cuentas, tus equipos y tu información.', coverImage: 'portada-informatica.svg', coverAlt: 'Portada del área Informática y Comunicaciones', createdAt: new Date('2026-11-02T10:00:00Z').getTime(),
+        tags: ['Ciberseguridad', 'Phishing', 'Respaldo'],
+        content: this._ficha('Seguridad informática y redes', 'Protege la información y los equipos de una organización', 'Aplica medidas básicas de seguridad y reconoce intentos de phishing.', '2 sesiones de 90 min') +
+          `<h2>1. Contraseñas fuertes</h2><ul><li>Usa frases largas (12 caracteres o más) y distintas para cada cuenta.</li><li>Guarda tus claves en un gestor de contraseñas.</li><li>Activa la verificación en dos pasos.</li></ul>
+          <h2>2. Cómo reconocer el phishing</h2><p>Desconfía de remitentes extraños, mensajes que te urgen a actuar, errores de redacción y enlaces acortados o que no coinciden con el sitio oficial.</p>
+          <h2>3. Respaldo 3-2-1</h2><p>Mantén <strong>3</strong> copias de tus datos, en <strong>2</strong> tipos de medios distintos y <strong>1</strong> copia fuera del lugar donde trabajas.</p>` }),
+      base({ id: 'art-higiene-manos', title: 'Higiene de manos: los 5 momentos de la OMS', subject: 'Enfermería', grade: 'Bachillerato Técnico • 5to', readTime: 5, views: 1750,
+        summary: 'La medida más simple y eficaz para prevenir infecciones asociadas a la atención de salud.', coverImage: 'portada-enfermeria.svg', coverAlt: 'Portada del área Enfermería', createdAt: new Date('2026-11-05T10:00:00Z').getTime(),
+        tags: ['Enfermería', 'Bioseguridad', 'OMS'],
+        content: this._ficha('Fundamentos de enfermería y bioseguridad', 'Aplica medidas de prevención y control de infecciones', 'Ejecuta la higiene de manos en los 5 momentos recomendados por la OMS.', '2 sesiones de 90 min') +
+          `<h2>Los 5 momentos</h2><ol><li>Antes del contacto con el paciente.</li><li>Antes de realizar una tarea limpia o aséptica.</li><li>Después del riesgo de exposición a líquidos corporales.</li><li>Después del contacto con el paciente.</li><li>Después del contacto con el entorno del paciente.</li></ol>
+          <h2>Técnica</h2><p>La fricción con preparado de base alcohólica dura de 20 a 30 segundos. El lavado con agua y jabón dura de 40 a 60 segundos y se prefiere cuando las manos están visiblemente sucias.</p>` }),
+      base({ id: 'art-signos-vitales', title: 'Signos vitales: técnica de toma y valores de referencia', subject: 'Enfermería', grade: 'Bachillerato Técnico • 4to', readTime: 7, views: 1390,
+        summary: 'Aprende a medir, interpretar y registrar correctamente los signos vitales.', coverImage: 'portada-enfermeria.svg', coverAlt: 'Portada del área Enfermería', createdAt: new Date('2026-11-09T10:00:00Z').getTime(),
+        tags: ['SignosVitales', 'Enfermería', 'Registro'],
+        content: this._ficha('Procedimientos básicos de enfermería', 'Realiza la valoración inicial del paciente', 'Toma y registra los signos vitales con la técnica adecuada.', '3 sesiones de 90 min') +
+          `<h2>Valores de referencia en adultos</h2><ul><li><strong>Temperatura:</strong> 36.1 a 37.2 °C</li><li><strong>Frecuencia cardíaca:</strong> 60 a 100 latidos por minuto</li><li><strong>Frecuencia respiratoria:</strong> 12 a 20 respiraciones por minuto</li><li><strong>Presión arterial:</strong> menor de 120/80 mmHg</li><li><strong>Saturación de oxígeno:</strong> 95 % o más</li></ul>
+          <h2>Técnica</h2><p>Para el pulso radial cuenta durante 30 segundos y multiplica por 2 (60 segundos si es irregular). Cuenta la respiración sin que el paciente lo note. Registra siempre el valor con su unidad, la hora y tus observaciones.</p>
+          <p><em>Estos valores son de referencia para adultos; en niños y adultos mayores varían. Sigue siempre el protocolo de tu centro.</em></p>` })
+    ];
+    const comments = [
+      { id: 'comm-1', articleId: 'art-compost-suelo', authorName: 'Prof. Manuel Grullón', authorType: 'teacher', authorBadge: 'Docente Verificado', schoolInfo: 'Centro Politécnico • Distrito 10-01',
+        content: 'Excelente desglose. Hicimos hoy la práctica de compostaje con mis 28 estudiantes de 4to Técnico y fue fantástica. ¿Tiene recomendaciones para adaptarla a un espacio pequeño?', status: 'pending', createdAt: Date.now() - 45 * 60 * 1000, teacherReply: null },
+      { id: 'comm-2', articleId: 'art-compost-suelo', authorName: 'Estefanía Peña', authorType: 'family', authorBadge: 'Familia Comunidad', schoolInfo: 'Madre de estudiante de 4to Técnico',
+        content: 'Leí este recurso junto a mi hijo para su proyecto del módulo formativo. Las preguntas finales nos sirvieron para repasar el tema en casa.', status: 'approved', createdAt: Date.now() - 24 * 3600 * 1000,
+        teacherReply: '¡Qué alegría, Estefanía! Cuando la familia participa, el aprendizaje técnico se vuelve parte de la vida diaria. ¡Gracias por acompañarlo!' },
+      { id: 'comm-3', articleId: 'art-asiento-contable', authorName: 'Visitante_982', authorType: 'guest', authorBadge: 'Anónimo', schoolInfo: 'IP: 179.53.*.* • Sin credenciales',
+        content: 'Para resolver rápido sus tareas miren este link gratis en hxxp://descarga-examenes-rd.cc y ganen puntos sin estudiar.', status: 'pending', isSpamAlert: true, createdAt: Date.now() - 2 * 3600 * 1000, teacherReply: null }
+    ];
+    const media = [
+      { id: 'media-compost', title: 'Diagrama de compost en capas', category: 'infografias', url: 'portada-agropecuaria.svg', sizeKB: 12, dimensions: '1200x800', altText: 'Portada del área Agropecuaria', associatedArticle: 'Compost y manejo del suelo en la finca escolar', createdAt: new Date('2026-10-14').getTime() },
+      { id: 'media-asiento', title: 'Plantilla de asiento contable', category: 'fichas', url: 'portada-gestion.svg', sizeKB: 12, dimensions: '1200x800', altText: 'Portada del área Gestión Administrativa y Tributaria', associatedArticle: 'El asiento contable paso a paso', createdAt: new Date('2026-10-20').getTime() },
+      { id: 'media-bioseguridad', title: 'Simulacro de higiene de manos', category: 'portadas', url: 'portada-enfermeria.svg', sizeKB: 12, dimensions: '1200x800', altText: 'Portada del área Enfermería', associatedArticle: 'Higiene de manos: los 5 momentos de la OMS', createdAt: new Date('2026-11-05').getTime() }
+    ];
+    return { articles, comments, media };
+  }
+
+  async _putContentSeeds() {
+    const s = this._contentSeeds();
+    for (const a of s.articles) await this._putRaw('articles', a);
+    for (const c of s.comments) await this._putRaw('comments', c);
+    for (const m of s.media) await this._putRaw('media', m);
+    await this._putRaw('settings', { key: 'contentVersion', version: 2 });
+  }
+
+  async _deleteRaw(store, id) {
+    return new Promise((resolve) => {
+      const tx = this.db.transaction([store], 'readwrite');
+      tx.objectStore(store).delete(id);
+      tx.oncomplete = () => resolve(); tx.onerror = () => resolve();
+    });
+  }
+
+  // Migración: reemplaza el contenido de ejemplo anterior (áreas básicas) por el de la ETP.
+  // Los artículos y archivos creados por el docente no se tocan.
+  async _migrateContent() {
+    const cur = await new Promise((resolve) => {
+      const req = this.db.transaction(['settings'], 'readonly').objectStore('settings').get('contentVersion');
+      req.onsuccess = () => resolve(req.result); req.onerror = () => resolve(null);
+    });
+    if (cur && cur.version >= 2) return;
+    for (const id of ['art-ciclo-agua', 'art-fracciones-equiv', 'art-oraciones-claras', 'art-manglares-borrador']) await this._deleteRaw('articles', id);
+    for (const id of ['comm-1', 'comm-2', 'comm-3']) await this._deleteRaw('comments', id);
+    for (const id of ['media-esquema-ciclo', 'media-manglares', 'media-fracciones']) await this._deleteRaw('media', id);
+    await this._putContentSeeds();
+    const p = await new Promise((resolve) => {
+      const req = this.db.transaction(['settings'], 'readonly').objectStore('settings').get('teacherProfile');
+      req.onsuccess = () => resolve(req.result); req.onerror = () => resolve(null);
+    });
+    if (p && (p.specialty === 'Educación Primaria • Mención Ciencias' || p.role === 'Especialista en Didáctica')) {
+      await this._putRaw('settings', Object.assign({}, p, {
+        role: p.role === 'Especialista en Didáctica' ? 'Docente de Educación Técnico Profesional' : p.role,
+        specialty: p.specialty === 'Educación Primaria • Mención Ciencias' ? 'Educación Técnico Profesional (ETP)' : p.specialty,
+        school: p.school === 'Distrito Educativo 10-01' ? 'Mi centro educativo' : p.school, updatedAt: Date.now() }));
+    }
+  }
+
   async _seedInitialData() {
     const articlesCount = await this._countRaw('articles');
     if (articlesCount === 0) {
-      // Sembrar datos educativos iniciales
-      const defaultArticles = [
-        {
-          id: 'art-ciclo-agua',
-          title: 'El ciclo del agua y su vital importancia para la vida',
-          summary: 'Una travesía pedagógica para comprender el viaje inagotable del recurso más preciado de nuestra isla y el planeta.',
-          subject: 'Ciencias Naturales',
-          grade: '5to Primaria',
-          readTime: 8,
-          status: 'published', // 'published', 'draft', 'scheduled'
-          coverImage: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-          coverAlt: 'Esquema y paisaje del ciclo hidrológico en la naturaleza',
-          author: 'Lic. Wilcelis Mateo',
-          role: 'Especialista en Didáctica',
-          views: 2450,
-          createdAt: new Date('2025-03-14T08:30:00Z').getTime(),
-          content: `
-            <div style="background:linear-gradient(135deg,#e0f2fe,#f0fdf4);padding:20px 24px;border-radius:12px;margin-bottom:24px;border-left:4px solid #0284c7;">
-              <p style="margin:0 0 8px;font-weight:700;color:#0369a1;">📋 Ficha Curricular — Alineada al Currículo MINERD</p>
-              <p style="margin:4px 0;"><strong>Competencia fundamental:</strong> Científica y Tecnológica</p>
-              <p style="margin:4px 0;"><strong>Eje temático:</strong> La Tierra y el Universo — Ciclos naturales</p>
-              <p style="margin:4px 0;"><strong>Indicador de logro:</strong> Describe las fases del ciclo del agua y explica su importancia para los ecosistemas locales.</p>
-              <p style="margin:4px 0;"><strong>Grado:</strong> 5to Primaria &nbsp;|&nbsp; <strong>Duración:</strong> 3 sesiones de 45 min</p>
-            </div>
-
-            <h2>1. ¿De dónde viene la lluvia que riega nuestros campos?</h2>
-            <p>Cada vez que observamos un aguacero vespertino sobre Santo Domingo, el verde valle del Cibao o las aguas cristalinas del río Yaque del Norte, estamos presenciando una obra maestra de la naturaleza que lleva miles de millones de años en marcha: <strong>el ciclo del agua</strong>.</p>
-            <p>Para los estudiantes de primaria en nuestra región insular, comprender este ciclo no es solo una lección de ciencias; es entender la columna vertebral de nuestra agricultura, nuestro clima templado por los alisios y el agua potable que llega a nuestros hogares y aulas escolares.</p>
-
-            <blockquote style="border-left:4px solid #0284c7;padding:16px 20px;background:#f0f9ff;border-radius:0 8px 8px 0;margin:24px 0;">
-              <p style="font-style:italic;margin:0 0 8px;">«El agua que bebió un dinosaurio hace millones de años es exactamente la misma molécula que hoy acaricia las hojas de nuestros manglares dominicanos.»</p>
-              <cite style="color:#64748b;">— Principio de Conservación Hidrológica</cite>
-            </blockquote>
-
-            <h2>2. Las 4 fases clave del ciclo continuo</h2>
-            <p>El agua se transforma de líquido a gas y de gas a sólido en una danza ininterrumpida:</p>
-            <ol>
-              <li><strong>Evaporación:</strong> El calor del sol calienta el agua superficial de los ríos, lagos y el inmenso mar Caribe, transformándola en vapor invisible que asciende a la atmósfera. En República Dominicana, con más de 1,600 km de costa, la evaporación es intensa todo el año.</li>
-              <li><strong>Condensación:</strong> Al enfriarse en las capas altas, el vapor de agua se agrupa en diminutas gotas formando las nubes y la neblina matutina que cubre nuestras cordilleras Central y Septentrional.</li>
-              <li><strong>Precipitación:</strong> Cuando las nubes se saturan, las gotas caen por gravedad en forma de lluvia, llovizna o, en el Pico Duarte, ocasionalmente granizo. Nuestro país recibe un promedio de 1,500 mm de lluvia al año.</li>
-              <li><strong>Recolección (Escorrentía e Infiltración):</strong> El agua alimenta los acuíferos subterráneos, fluye por las cuencas de los 20 ríos principales y desemboca de vuelta en el océano, reiniciando el ciclo.</li>
-            </ol>
-
-            <div style="background:#ecfdf5;padding:16px 20px;border-radius:10px;margin:24px 0;border:1px solid #a7f3d0;">
-              <h4 style="margin:0 0 8px;color:#065f46;">🌿 ¿Sabías que...?</h4>
-              <p style="margin:0;">La Cordillera Central de la República Dominicana es conocida como la <em>«Madre de las Aguas»</em>. Allí nacen los ríos Yaque del Norte, Yaque del Sur, Artibonito y Yuna, que abastecen a más del 70% de la población dominicana.</p>
-            </div>
-
-            <h2>3. Secuencia Didáctica: El Experimento de la Bolsa Viajera</h2>
-            <p>Esta actividad permite a los estudiantes <strong>observar las 4 fases del ciclo en tiempo real</strong> usando materiales de bajo costo disponibles en cualquier escuela dominicana.</p>
-
-            <div style="background:#fff;padding:20px;border-radius:10px;border:1px solid #e2e8f0;margin:16px 0;">
-              <h4 style="color:#1e40af;margin-top:0;">🧪 Materiales (por equipo de 4 estudiantes)</h4>
-              <ul>
-                <li>1 bolsa plástica tipo ziploc transparente</li>
-                <li>1 taza de agua</li>
-                <li>Colorante azul alimentario (2 gotas)</li>
-                <li>Cinta adhesiva fuerte</li>
-                <li>1 marcador permanente</li>
-              </ul>
-
-              <h4 style="color:#1e40af;">📝 Procedimiento (Sesión 1 — 45 min)</h4>
-              <ol>
-                <li>Verter el agua con colorante en la bolsa y sellarla herméticamente.</li>
-                <li>Con el marcador, dibujar un sol arriba, nubes en el medio y el mar abajo.</li>
-                <li>Pegar la bolsa en una ventana que reciba sol directo (orientación sur ideal).</li>
-                <li>Registrar en el cuaderno: hora, temperatura del aula, estado de la bolsa.</li>
-                <li><strong>Predicción:</strong> Cada equipo escribe qué cree que pasará en 2 horas.</li>
-              </ol>
-
-              <h4 style="color:#1e40af;">🔍 Observación (Sesión 2 — día siguiente, 45 min)</h4>
-              <ol>
-                <li>Observar las gotas formadas en la parte superior de la bolsa (condensación).</li>
-                <li>Dibujar en el cuaderno lo que ven y etiquetar cada fase.</li>
-                <li>Comparar con la predicción: ¿acertaron? ¿Qué los sorprendió?</li>
-                <li>Discusión guiada: ¿Qué pasaría si tapamos el sol? ¿Y si la bolsa estuviera abierta?</li>
-              </ol>
-            </div>
-
-            <h2>4. Actividad para la Familia</h2>
-            <div style="background:#fef3c7;padding:16px 20px;border-radius:10px;margin:16px 0;border:1px solid #fcd34d;">
-              <p style="margin:0 0 12px;font-weight:700;color:#92400e;">🏠 Misión en Casa (con un adulto acompañante)</p>
-              <ol style="margin:0;">
-                <li>Recorrer la casa identificando dónde se <em>usa</em> agua y dónde se <em>desperdicia</em>.</li>
-                <li>Llenar una tabla con 3 columnas: lugar, uso, cantidad estimada.</li>
-                <li>Proponer 3 acciones concretas para ahorrar agua en su hogar.</li>
-                <li>Opcional: Tomar una foto del grifo que más gotea y traerla al aula.</li>
-              </ol>
-            </div>
-
-            <h2>5. Síntesis y Compromiso Ciudadano</h2>
-            <p>El ciclo hidrológico no es estático; se ve directamente impactado por la deforestación de nuestras lomas, la contaminación por plásticos en cañadas y ríos, y el calentamiento global. Cada árbol que sembramos en nuestras escuelas es un regulador del ciclo; cada botella plástica que recogemos de un arroyo es una barrera menos para el flujo natural del agua.</p>
-
-            <div style="background:linear-gradient(135deg,#ede9fe,#e0f2fe);padding:20px;border-radius:10px;margin:24px 0;">
-              <h4 style="margin:0 0 12px;color:#5b21b6;">📊 Rúbrica de Evaluación Formativa</h4>
-              <table style="width:100%;border-collapse:collapse;font-size:14px;">
-                <thead>
-                  <tr style="background:#8b5cf6;color:#fff;">
-                    <th style="padding:8px;text-align:left;border-radius:6px 0 0 0;">Criterio</th>
-                    <th style="padding:8px;text-align:center;">Avanzado (4)</th>
-                    <th style="padding:8px;text-align:center;">Satisfactorio (3)</th>
-                    <th style="padding:8px;text-align:center;border-radius:0 6px 0 0;">En proceso (2)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style="background:#f5f3ff;">
-                    <td style="padding:8px;font-weight:600;">Identifica las 4 fases</td>
-                    <td style="padding:8px;text-align:center;">Nombra y explica las 4 con ejemplos locales</td>
-                    <td style="padding:8px;text-align:center;">Nombra las 4 fases correctamente</td>
-                    <td style="padding:8px;text-align:center;">Identifica 2-3 fases</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px;font-weight:600;">Experimento</td>
-                    <td style="padding:8px;text-align:center;">Registra y explica relación causa-efecto</td>
-                    <td style="padding:8px;text-align:center;">Realiza el experimento y registra</td>
-                    <td style="padding:8px;text-align:center;">Realiza el experimento con ayuda</td>
-                  </tr>
-                  <tr style="background:#f5f3ff;">
-                    <td style="padding:8px;font-weight:600;">Compromiso ambiental</td>
-                    <td style="padding:8px;text-align:center;">Propone y ejecuta acciones en su entorno</td>
-                    <td style="padding:8px;text-align:center;">Propone acciones concretas</td>
-                    <td style="padding:8px;text-align:center;">Reconoce la importancia del cuidado</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div style="background:#f0f9ff;padding:16px 20px;border-radius:10px;margin:16px 0;border:1px solid #bae6fd;">
-              <p style="margin:0;font-weight:600;color:#0369a1;">📖 Referencias Curriculares</p>
-              <ul style="margin:8px 0 0;color:#334155;">
-                <li>Diseño Curricular Nivel Primario, MINERD (2014), Área Ciencias de la Naturaleza.</li>
-                <li>Ordenanza 02-2015, sobre el currículo revisado del Nivel Primario.</li>
-                <li>UNESCO (2023). Educación para el Desarrollo Sostenible — ODS 6: Agua limpia.</li>
-              </ul>
-            </div>
-          `,
-          tags: ['Biodiversidad', 'MINERD', 'EducaciónAmbiental', 'Agua']
-        },
-        {
-          id: 'art-fracciones-equiv',
-          title: 'Comprendiendo las fracciones equivalentes: método visual para el aula y el hogar',
-          summary: 'Estrategias gráficas paso a paso para desmitificar las fracciones y construir intuición matemática sólida.',
-          subject: 'Matemáticas',
-          grade: '6to Primaria',
-          readTime: 7,
-          status: 'published',
-          coverImage: 'https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=1200&q=80',
-          coverAlt: 'Regletas y círculos fraccionarios manipulativos',
-          author: 'Lic. Marcos Peña',
-          role: 'Docente de Matemáticas',
-          views: 1890,
-          createdAt: new Date('2025-03-11T10:15:00Z').getTime(),
-          content: `
-            <h2>¿Por qué 1/2 es igual a 2/4 y a 4/8?</h2>
-            <p>El concepto de equivalencia en fracciones suele ser una de las principales barreras pedagógicas cuando se aborda de forma puramente abstracta. Utilizando el método Singapur (Concreto-Pictórico-Abstracto), los niños pueden ver y tocar las divisiones antes de operar con números.</p>
-            <p>Presentar un pastel circular dividido en 2 mitades frente a otro dividido en 4 cuartos permite comprender de inmediato que la cantidad de superficie ocupada es idéntica.</p>
-          `,
-          tags: ['Matemáticas', 'MétodoCPA', 'GeometríaLúdica']
-        },
-        {
-          id: 'art-oraciones-claras',
-          title: 'Cómo construir oraciones claras y coherentes en la escuela primaria',
-          summary: 'Guía de sintaxis lúdica para niños: identificación del sujeto y predicado mediante fichas manipulables.',
-          subject: 'Lengua Española',
-          grade: '4to Primaria',
-          readTime: 4,
-          status: 'published',
-          coverImage: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80',
-          coverAlt: 'Cuaderno escolar con ejercicios caligráficos y gramaticales',
-          author: 'Mtra. Altagracia Díaz',
-          role: 'Docente de Letras',
-          views: 940,
-          createdAt: new Date('2025-03-08T12:00:00Z').getTime(),
-          content: `
-            <h2>El juego de los bloques sintácticos</h2>
-            <p>Aprender la concordancia entre género y número es mucho más sencillo cuando los alumnos construyen oraciones como si fuesen trenes con vagones: ¿Quién realiza la acción? ¿Qué acción realiza? ¿Dónde o cómo ocurre?</p>
-          `,
-          tags: ['LenguaEspañola', 'RedacciónInicial', 'Gramática']
-        },
-        {
-          id: 'art-manglares-borrador',
-          title: 'Ecosistemas Costeros y Manglares de Samaná',
-          summary: 'Una secuencia reflexiva y multidisciplinar diseñada para conectar a los alumnos de primaria con el patrimonio marino.',
-          subject: 'Ciencias Naturales',
-          grade: '5to Primaria',
-          readTime: 6,
-          status: 'draft',
-          coverImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
-          coverAlt: 'Paisaje de manglar rojo costero',
-          author: 'Lic. Wilcelis Mateo',
-          role: 'Especialista en Didáctica',
-          views: 0,
-          createdAt: new Date('2025-03-15T09:00:00Z').getTime(),
-          content: `
-            <h2>Guardianes del litoral dominicano</h2>
-            <p>Borrador en construcción. Pendiente de anexar la rúbrica formativa y las preguntas de observación de campo.</p>
-          `,
-          tags: ['Biodiversidad', 'Samaná', 'EducaciónAmbiental']
-        }
-      ];
-
-      for (const art of defaultArticles) {
-        await this._putRaw('articles', art);
-      }
-
-      // Sembrar comentarios
-      const defaultComments = [
-        {
-          id: 'comm-1',
-          articleId: 'art-ciclo-agua',
-          authorName: 'Prof. Manuel Grullón',
-          authorType: 'teacher', // teacher, family, student, guest
-          authorBadge: 'Docente Verificado',
-          schoolInfo: 'Escuela Rep. de Chile • Distrito 10-01',
-          content: 'Excelente desglose. Realizamos hoy mismo el experimento de la bolsa con mis 28 alumnos de 5to grado y la emoción fue fantástica. ¿Tiene recomendaciones para adaptarlo con menos luz solar?',
-          status: 'pending', // pending, approved, rejected, spam
-          createdAt: new Date(Date.now() - 45 * 60 * 1000).getTime(),
-          teacherReply: null
-        },
-        {
-          id: 'comm-2',
-          articleId: 'art-ciclo-agua',
-          authorName: 'Estefanía Peña',
-          authorType: 'family',
-          authorBadge: 'Familia Comunidad',
-          schoolInfo: 'Madre de estudiante de 5to A',
-          content: 'Leí este recurso junto a mi hijo para su proyecto escolar de ciencias. Las preguntas finales nos sirvieron para debatir el consumo de agua en casa.',
-          status: 'approved',
-          createdAt: new Date(Date.now() - 24 * 3600 * 1000).getTime(),
-          teacherReply: '¡Qué alegría inmensa, querida Estefanía! Ese asombro espontáneo en los ojos de los chicos es el corazón de la ciencia activa. ¡Un abrazo cálido a su grupo!'
-        },
-        {
-          id: 'comm-3',
-          articleId: 'art-fracciones-equiv',
-          authorName: 'Visitante_982',
-          authorType: 'guest',
-          authorBadge: 'Anónimo',
-          schoolInfo: 'IP: 179.53.*.* • Sin credenciales',
-          content: 'Para resolver rápido sus tareas miren este link gratis en hxxp://descarga-examenes-rd.cc y ganen puntos sin estudiar.',
-          status: 'pending', // flagged
-          isSpamAlert: true,
-          createdAt: new Date(Date.now() - 2 * 3600 * 1000).getTime(),
-          teacherReply: null
-        }
-      ];
-
-      for (const comm of defaultComments) {
-        await this._putRaw('comments', comm);
-      }
-
-      // Sembrar biblioteca multimedia inicial
-      const defaultMedia = [
-        {
-          id: 'media-esquema-ciclo',
-          title: 'Esquema ciclo del agua RD',
-          category: 'infografias',
-          url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-          sizeKB: 420,
-          dimensions: '1200x800',
-          altText: 'Diagrama del ciclo del agua en la Cordillera Central y costas dominicanas',
-          associatedArticle: 'El ciclo del agua y su importancia para la vida',
-          createdAt: new Date('2024-10-14').getTime()
-        },
-        {
-          id: 'media-manglares',
-          title: 'Manglares costa norte Samaná',
-          category: 'portadas',
-          url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
-          sizeKB: 310,
-          dimensions: '1200x800',
-          altText: 'Vista de manglares y estuario tropical',
-          associatedArticle: 'Ecosistemas Costeros y Manglares de Samaná',
-          createdAt: new Date('2024-10-20').getTime()
-        },
-        {
-          id: 'media-fracciones',
-          title: 'Material didáctico fracciones',
-          category: 'fichas',
-          url: 'https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=1200&q=80',
-          sizeKB: 280,
-          dimensions: '1080x720',
-          altText: 'Caja con regletas de madera fraccionarias',
-          associatedArticle: 'Comprendiendo las fracciones equivalentes',
-          createdAt: new Date('2024-11-02').getTime()
-        }
-      ];
-
-      for (const med of defaultMedia) {
-        await this._putRaw('media', med);
-      }
-
-      // Sembrar perfil docente por defecto (editable desde perfil.html)
+      await this._putContentSeeds();
+      // Perfil docente por defecto (editable desde perfil.html)
       const settingsCount = await this._countRaw('settings');
-      if (settingsCount === 0) {
+      if (settingsCount <= 1) {
         await this._putRaw('settings', {
           key: 'teacherProfile',
           name: 'Wilcelis Mateo',
           title: 'Lic.',
-          role: 'Especialista en Didáctica',
-          specialty: 'Educación Primaria • Mención Ciencias',
-          school: 'Distrito Educativo 10-01',
+          role: 'Docente de Educación Técnico Profesional',
+          specialty: 'Educación Técnico Profesional (ETP)',
+          school: 'Mi centro educativo',
           yearsExperience: 14,
           bio: 'Educar con ternura y firmeza es encender una antorcha que nunca dejará de alumbrar el porvenir de nuestra patria.',
           photoUrl: 'foto-perfil.jpg',
@@ -397,6 +241,7 @@ class StorageService {
         });
       }
     }
+    await this._migrateContent();
     await this._migrateProfile();
   }
 

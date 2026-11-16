@@ -6,7 +6,7 @@
       min-height: max(884px, 100dvh);
     }
   </style>
-  <link rel="stylesheet" href="tema-navidad.css"/>
+  <link rel="stylesheet" href="tema-navidad.css?v=etp2"/>
 </head><body data-auto-profile class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><button aria-label="Volver" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container-high transition-colors shrink-0" onclick="history.back()"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button><h1 class="font-headline-sm text-headline-sm text-primary truncate">Editor</h1></div><div class="flex items-center gap-space-xs shrink-0"><img alt="Lic. Wilcelis Mateo" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container/20" data-tp="photo" src="foto-perfil.jpg"/></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full pb-12">
 <!-- Status bar & Global Actions -->
 <div class="w-full bg-surface-container-low px-gutter-mobile py-space-sm flex flex-col gap-space-sm shadow-sm">
@@ -48,11 +48,11 @@
 <div class="flex flex-col gap-space-sm bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
 <div class="flex flex-col gap-1">
 <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="article-title">Título de la publicación</label>
-<input class="w-full font-headline-md-mobile text-headline-md-mobile text-primary bg-transparent focus:outline-none placeholder:text-outline-variant" id="article-title" placeholder="Ej. Explorando los manglares dominicanos..." type="text" value="Explorando los manglares dominicanos y su biodiversidad marina"/>
+<input class="w-full font-headline-md-mobile text-headline-md-mobile text-primary bg-transparent focus:outline-none placeholder:text-outline-variant" id="article-title" placeholder="Ej. Compost y manejo del suelo en la finca escolar..." type="text" value=""/>
 </div>
 <div class="flex flex-col gap-1 pt-space-xs">
 <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="article-subtitle">Resumen didáctico y objetivos</label>
-<textarea class="w-full font-body-sm text-body-sm text-on-surface-variant bg-transparent resize-none focus:outline-none placeholder:text-outline-variant leading-relaxed" id="article-subtitle" placeholder="Una secuencia reflexiva para conectar a los estudiantes con su entorno costero..." rows="2">Una secuencia reflexiva y multidisciplinar diseñada para conectar a los alumnos de primaria y media con la riqueza biológica de nuestras costas tropicales.</textarea>
+<textarea class="w-full font-body-sm text-body-sm text-on-surface-variant bg-transparent resize-none focus:outline-none placeholder:text-outline-variant leading-relaxed" id="article-subtitle" placeholder="Resumen breve del artículo para el módulo formativo..." rows="2"></textarea>
 </div>
 </div>
 <!-- Curricular Alignment Card -->
@@ -63,25 +63,22 @@
 </div>
 <div class="grid grid-cols-2 gap-space-sm">
 <div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant" for="subject-select">Asignatura</label>
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="subject-select">Área técnica</label>
 <div class="relative">
 <select class="w-full font-body-sm text-body-sm bg-surface-container-low text-on-surface rounded-lg py-2.5 px-3 appearance-none focus:outline-none focus:bg-surface-container" id="subject-select">
-<option selected="">Ciencias Naturales</option>
-<option>Matemáticas</option>
-<option>Lengua Española</option>
-<option>Ciencias Sociales</option>
+<option selected="">Agropecuaria</option>
+<option>Gestión Administrativa y Tributaria</option>
+<option>Informática y Comunicaciones</option>
+<option>Enfermería</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-[18px]">expand_more</span>
 </div>
 </div>
 <div class="flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant" for="grade-select">Nivel / Grado</label>
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="grade-select">Nivel / Módulo</label>
 <div class="relative">
 <select class="w-full font-body-sm text-body-sm bg-surface-container-low text-on-surface rounded-lg py-2.5 px-3 appearance-none focus:outline-none focus:bg-surface-container" id="grade-select">
-<option>4to Primaria</option>
-<option selected="">5to Primaria</option>
-<option>6to Primaria</option>
-<option>1ro Secundaria</option>
+<option>Bachillerato Técnico • 4to</option><option selected="">Bachillerato Técnico • 5to</option><option>Bachillerato Técnico • 6to</option><option>Módulo formativo</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-[18px]">expand_more</span>
 </div>
@@ -107,7 +104,7 @@
             <button aria-label="Eliminar etiqueta" class="hover:text-error leading-none" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
 </span>
 <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full font-label-md text-label-md">
-            #Samaná
+            #ETP
             <button aria-label="Eliminar etiqueta" class="hover:text-error leading-none" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
 </span>
 <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full font-label-md text-label-md">
@@ -135,9 +132,9 @@
 <span class="font-label-sm text-label-sm text-on-surface-variant">Recomendado 16:9</span>
 </div>
 <div class="relative w-full h-44 rounded-lg overflow-hidden group">
-<img class="w-full h-full object-cover" data-alt="Lush Dominican coastal mangrove forest with clear turquoise waters and intricate mangrove roots visible beneath the surface, bathed in warm Caribbean morning sunlight, crisp editorial photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrvKaq4DQeWQS1BJoOx2pIOhqvWKvRRsG60Pin3bHx_g1HL4ZvuwrmcZzgpr1i_CAr8S6jxII6czub6YBLrtGfFdrlESHCQiEZ6SjdJBMfGzwOoQwZp1ZMUJ9c25-eZgMOisyTekA-_9ndzJtpYDHKB-C35Sq6zEXEOOxElxtieSH5lD1C2NBBH_wOHCZy6TwuwrPf7V_TnzgZ78_-PGfBi7VILusPf_NtT5LBR5vO8HLj4-BqiSA"/>
+<img class="w-full h-full object-cover" data-alt="Lush Dominican coastal mangrove forest with clear turquoise waters and intricate mangrove roots visible beneath the surface, bathed in warm Caribbean morning sunlight, crisp editorial photography" src="portada-agropecuaria.svg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex items-end p-space-sm">
-<span class="text-on-primary font-label-sm text-label-sm bg-primary/60 px-2 py-0.5 rounded backdrop-blur-sm">Portada activa: Manglares de Samaná</span>
+<span class="text-on-primary font-label-sm text-label-sm bg-primary/60 px-2 py-0.5 rounded backdrop-blur-sm">Portada activa: Portada del área</span>
 </div>
 </div>
 <div class="grid grid-cols-2 gap-2 pt-1">
@@ -152,7 +149,7 @@
 </div>
 <div class="flex flex-col gap-1 pt-1">
 <label class="font-label-sm text-label-sm text-on-surface-variant" for="cover-alt">Texto alternativo accesible (alt)</label>
-<input class="font-body-sm text-body-sm bg-surface-container-low text-on-surface px-3 py-2 rounded-lg focus:outline-none focus:bg-surface-container" id="cover-alt" placeholder="Describe la imagen para lectores con discapacidad visual..." type="text" value="Vista submarina y superficial de raíces de manglar rojo en una ensenada caribeña cristalina"/>
+<input class="font-body-sm text-body-sm bg-surface-container-low text-on-surface px-3 py-2 rounded-lg focus:outline-none focus:bg-surface-container" id="cover-alt" placeholder="Describe la imagen para lectores con discapacidad visual..." type="text" value="Portada del área técnica"/>
 </div>
 </div>
 </div>
@@ -212,44 +209,7 @@
 </div>
 <!-- Live Editable Body Mockup -->
 <div class="flex flex-col gap-space-md font-body-md text-body-md text-on-surface leading-relaxed">
-<h2 class="font-headline-md-mobile text-headline-md-mobile text-primary">
-          1. El ecosistema invisible: guardianes del litoral
-        </h2>
-<p class="font-body-md text-body-md text-on-surface">
-          Los manglares constituyen uno de los biomas más singulares y determinantes de la geografía dominicana. Presentes a lo largo del Parque Nacional Los Haitises, Bahía de las Calderas y la Laguna de Oviedo, actúan como barreras naturales frente a los ciclones tropicales y como viveros indispensables para innumerables especies ícticas.
-        </p>
-<!-- Bloque de Cita Pedagógica -->
-<div class="bg-surface-container-low p-space-md rounded-r-xl relative overflow-hidden">
-<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary"></div>
-<p class="font-display-mobile text-body-lg italic text-primary leading-snug mb-2 pl-2">
-            «La enseñanza de la ciencia ambiental no debe limitarse al catálogo de datos; debe suscitar el asombro y la responsabilidad activa ante nuestro propio patrimonio costero.»
-          </p>
-<div class="flex items-center gap-2 pl-2">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wide">MINERD • Guía Curricular de Ciencias V</span>
-</div>
-</div>
-<p class="font-body-md text-body-md text-on-surface">
-          Al integrar a los estudiantes en la exploración de las raíces zancudas del mangle rojo (<em>Rhizophora mangle</em>), facilitamos que identifiquen la filtración de sedimentos y la simbiosis con moluscos y crustáceos.
-        </p>
-<!-- Didactic Box: Vocabulario Clave -->
-<div class="bg-secondary/10 p-space-md rounded-xl flex flex-col gap-2">
-<div class="flex items-center gap-2 text-secondary">
-<span class="material-symbols-outlined text-[20px]">menu_book</span>
-<span class="font-title-md text-title-md font-bold">Glosario Docente: Halófitas</span>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface">
-            Plantas adaptadas morfológicamente para prosperar en ambientes con altas concentraciones salinas mediante glándulas secretoras o tejidos de exclusión osmótica foliar.
-          </p>
-</div>
-<!-- Inline Prompt Suggestion / Delight Block -->
-<div class="bg-surface-container-high/60 p-space-sm rounded-lg flex items-center justify-between">
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-[18px]">add_circle</span>
-<span class="font-body-sm text-body-sm">Escribe aquí para continuar la secuencia o presiona '/' para bloques...</span>
-</div>
-<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">/ comando</span>
-</div>
+<h2>1. Introducción</h2><p>Presenta el tema, el módulo formativo y la competencia que se trabaja.</p><h2>2. Desarrollo</h2><p>Explica los conceptos y procedimientos con ejemplos del taller, el laboratorio o la práctica profesional.</p><h2>3. Cierre y evaluación</h2><p>Propón una actividad práctica y los criterios para evaluarla.</p>
 </div>
 </div>
 </div>
@@ -272,7 +232,7 @@
 <span class="material-symbols-outlined text-error text-[24px]">picture_as_pdf</span>
 </div>
 <div class="flex flex-col min-w-0">
-<span class="font-label-lg text-label-lg text-primary truncate font-bold">Guia_Campo_Manglares_5toPrimaria.pdf</span>
+<span class="font-label-lg text-label-lg text-primary truncate font-bold">Guia_Compost_Suelo_Finca.pdf</span>
 <span class="font-body-sm text-body-sm text-on-surface-variant">2.4 MB • 4 páginas didácticas imprimibles</span>
 </div>
 </div>
@@ -324,8 +284,8 @@
 <span>Publicar ahora</span>
 </button>
 </div>
-</div></main><script src="db.js"></script>
-<script src="profile-loader.js"></script>
+</div></main><script src="db.js?v=etp2"></script>
+<script src="profile-loader.js?v=etp2"></script>
 <script>
 (function() {
   // === DOM References ===
@@ -577,8 +537,8 @@
       // Populate fields
       titleInput.value = art.title || '';
       summaryInput.value = art.summary || '';
-      subjectSelect.value = art.subject || 'Ciencias Naturales';
-      gradeSelect.value = art.grade || '5to Primaria';
+      subjectSelect.value = art.subject || 'Agropecuaria';
+      gradeSelect.value = art.grade || 'Bachillerato Técnico • 5to';
       readTimeInput.value = art.readTime || 5;
       coverAltInput.value = art.coverAlt || '';
 
@@ -649,7 +609,7 @@
   init();
 })();
 </script>
-<script src="archivos.js"></script>
-<script src="edit-profile.js"></script>
-<script src="tema-navidad.js"></script>
+<script src="archivos.js?v=etp2"></script>
+<script src="edit-profile.js?v=etp2"></script>
+<script src="tema-navidad.js?v=etp2"></script>
 </body></html>

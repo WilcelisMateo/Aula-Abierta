@@ -4,7 +4,7 @@
   'use strict';
   var FORM_URL = ''; // Opcional: pega aquí la URL de un formulario (Formspree, Google Forms) para recibir los comentarios.
   var P = window.SaberUpProgreso, APP = null;
-  var AREAS = { 'Ciencias Naturales': 'science', 'Matemática': 'calculate', 'Lengua Española': 'menu_book', 'Ciencias Sociales': 'public' };
+  var AREAS = { "Agropecuaria": "agriculture", "Gestión Administrativa y Tributaria": "receipt_long", "Informática y Comunicaciones": "computer", "Enfermería": "medical_services" };
   var KS = Object.keys(AREAS);
 
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -16,30 +16,30 @@
   function $$(s, r) { return Array.prototype.slice.call((r || APP).querySelectorAll(s)); }
   function go(v) { location.hash = v; }
 
-  /* ───────── datos ───────── */
+  /* ───────── datos (4 áreas de la Educación Técnico Profesional) ───────── */
   var MEM = {
-    'Ciencias Naturales': [['Fotosíntesis', 'Las plantas fabrican su alimento'], ['Corazón', 'Bombea la sangre'], ['Evaporación', 'El agua pasa a vapor'], ['Mercurio', 'Planeta más cercano al Sol'], ['Mamífero', 'Amamanta a sus crías'], ['Sólido', 'Tiene forma propia, como el hielo']],
-    'Matemática': [['Perímetro', 'Suma de todos los lados'], ['Triángulo', 'Sus ángulos suman 180°'], ['Mitad', 'Dividir entre 2'], ['7 × 8', '56'], ['Fracción', 'Parte de un entero'], ['Porcentaje', 'Partes de cada 100']],
-    'Lengua Española': [['Sinónimo', 'Significa algo parecido'], ['Antónimo', 'Significa lo contrario'], ['Verbo', 'Expresa una acción'], ['Sustantivo', 'Nombra personas o cosas'], ['Adjetivo', 'Dice cómo es algo'], ['Palabra aguda', 'Fuerza en la última sílaba']],
-    'Ciencias Sociales': [['27 de febrero', 'Independencia Nacional'], ['16 de agosto', 'Restauración'], ['Duarte', 'Padre de la Patria'], ['Santo Domingo', 'Capital dominicana'], ['Pico Duarte', 'Punto más alto del Caribe'], ['Haití', 'Vecino en La Española']]
+    "Agropecuaria": [["Compost", "Abono por descomposición de residuos"], ["Rotación", "Alternar cultivos en una parcela"], ["Riego por goteo", "Agua gota a gota en la raíz"], ["Nitrógeno", "Nutriente de los materiales verdes"], ["BPA", "Buenas Prácticas Agrícolas"], ["pH", "Acidez o alcalinidad del suelo"]],
+    "Gestión Administrativa y Tributaria": [["Partida doble", "Débito igual a crédito"], ["ITBIS", "Impuesto general del 18 %"], ["NCF", "Número de comprobante fiscal"], ["Activo", "Bienes y derechos de la empresa"], ["Libro diario", "Registro cronológico de operaciones"], ["DGII", "Institución de impuestos internos"]],
+    "Informática y Comunicaciones": [["Algoritmo", "Pasos ordenados para resolver"], ["RAM", "Memoria temporal de trabajo"], ["Phishing", "Engaño para robar datos"], ["Variable", "Espacio con nombre para un dato"], ["Respaldo 3-2-1", "3 copias, 2 medios, 1 fuera"], ["CPU", "Procesador del equipo"]],
+    "Enfermería": [["Higiene de manos", "Previene infecciones cruzadas"], ["Pulso", "Latidos por minuto"], ["Bioseguridad", "Medidas contra riesgos biológicos"], ["Termómetro", "Mide la temperatura"], ["Tensiómetro", "Mide la presión arterial"], ["Oxímetro", "Mide la saturación de oxígeno"]]
   };
   var CLAS = {
-    'Ciencias Naturales': { bins: ['Ser vivo', 'No vivo'], items: [['Árbol', 0], ['Roca', 1], ['Perro', 0], ['Agua', 1], ['Hongo', 0], ['Aire', 1], ['Pájaro', 0], ['Montaña', 1]] },
-    'Matemática': { bins: ['Número par', 'Número impar'], items: [['12', 0], ['7', 1], ['20', 0], ['15', 1], ['8', 0], ['33', 1], ['40', 0], ['9', 1]] },
-    'Lengua Española': { bins: ['Sustantivo', 'Verbo', 'Adjetivo'], items: [['casa', 0], ['correr', 1], ['bonito', 2], ['perro', 0], ['saltar', 1], ['grande', 2], ['escuela', 0], ['cantar', 1]] },
-    'Ciencias Sociales': { bins: ['Símbolo patrio', 'Fecha patria'], items: [['Bandera', 0], ['Escudo', 0], ['Himno Nacional', 0], ['27 de febrero', 1], ['16 de agosto', 1], ['6 de noviembre', 1]] }
+    "Agropecuaria": {"bins": ["Material verde (nitrógeno)", "Material seco (carbono)"], "items": [["Restos de frutas", 0], ["Hojas secas", 1], ["Césped fresco", 0], ["Paja", 1], ["Cáscara de plátano", 0], ["Cartón", 1], ["Restos de vegetales", 0], ["Aserrín", 1]]},
+    "Gestión Administrativa y Tributaria": {"bins": ["Activo", "Pasivo"], "items": [["Efectivo", 0], ["Préstamo por pagar", 1], ["Inventario", 0], ["Cuentas por pagar", 1], ["Equipos", 0], ["Salarios por pagar", 1], ["Cuentas por cobrar", 0], ["Impuestos por pagar", 1]]},
+    "Informática y Comunicaciones": {"bins": ["Hardware", "Software"], "items": [["Teclado", 0], ["Navegador", 1], ["Procesador", 0], ["Sistema operativo", 1], ["Disco duro", 0], ["Hoja de cálculo", 1], ["Monitor", 0], ["Antivirus", 1]]},
+    "Enfermería": {"bins": ["Signo vital", "Equipo de protección"], "items": [["Pulso", 0], ["Guantes", 1], ["Temperatura", 0], ["Mascarilla", 1], ["Respiración", 0], ["Bata", 1], ["Presión arterial", 0], ["Gafas protectoras", 1]]}
   };
   var SOPA = {
-    'Ciencias Naturales': ['PLANTA', 'AGUA', 'CELULA', 'ATOMO', 'LUNA', 'ENERGIA'],
-    'Matemática': ['SUMA', 'RESTA', 'ANGULO', 'FRACCION', 'CUBO', 'DECENA'],
-    'Lengua Española': ['VERBO', 'SILABA', 'TILDE', 'RIMA', 'CUENTO', 'POEMA'],
-    'Ciencias Sociales': ['DUARTE', 'SANCHEZ', 'MELLA', 'BANDERA', 'ISLA', 'PATRIA']
+    "Agropecuaria": ["ABONO", "SUELO", "SIEMBRA", "COSECHA", "RIEGO", "SEMILLA"],
+    "Gestión Administrativa y Tributaria": ["ACTIVO", "PASIVO", "FACTURA", "IMPUESTO", "DEBITO", "CREDITO"],
+    "Informática y Comunicaciones": ["CODIGO", "SOFTWARE", "VARIABLE", "PYTHON", "REDES", "DATOS"],
+    "Enfermería": ["PULSO", "SALUD", "GUANTES", "PACIENTE", "VACUNA", "HIGIENE"]
   };
   var VF = {
-    'Ciencias Naturales': [['El Sol es una estrella.', 1, 'Es la estrella más cercana a la Tierra.'], ['Los delfines son peces.', 0, 'Son mamíferos: respiran aire y amamantan a sus crías.'], ['El agua hierve a 100 °C al nivel del mar.', 1, 'Ese es su punto de ebullición.'], ['Las plantas absorben oxígeno para hacer la fotosíntesis.', 0, 'Absorben dióxido de carbono y liberan oxígeno.'], ['El corazón es un músculo.', 1, 'Late para impulsar la sangre.']],
-    'Matemática': [['Un triángulo tiene 4 lados.', 0, 'Tiene 3 lados.'], ['La mitad de 50 es 25.', 1, '50 ÷ 2 = 25.'], ['El número 0 es par.', 1, 'Es divisible entre 2.'], ['Un cuadrado tiene 4 lados iguales.', 1, 'Y 4 ángulos rectos.'], ['9 × 9 = 72.', 0, '9 × 9 = 81.']],
-    'Lengua Española': [['«Rápido» es un verbo.', 0, 'Es un adjetivo.'], ['«Casa» es un sustantivo.', 1, 'Nombra una cosa.'], ['Las palabras llanas siempre llevan tilde.', 0, 'Solo la llevan si no terminan en vocal, n ni s.'], ['«Enorme» es un sinónimo de «grande».', 1, 'Significan algo parecido.'], ['Una oración empieza con minúscula.', 0, 'Empieza con mayúscula.']],
-    'Ciencias Sociales': [['La capital dominicana es Santiago.', 0, 'Es Santo Domingo.'], ['Duarte es uno de los Padres de la Patria.', 1, 'Junto a Sánchez y Mella.'], ['La Independencia Nacional se celebra el 27 de febrero.', 1, 'Se proclamó en 1844.'], ['Compartimos la isla con Cuba.', 0, 'La compartimos con Haití.'], ['El Pico Duarte es el más alto del Caribe.', 1, 'Mide unos 3,098 metros.']]
+    "Agropecuaria": [["El compost se prepara con restos de carne y grasa.", 0, "Se evitan carnes y grasas porque atraen plagas y huelen mal."], ["La rotación de cultivos ayuda a conservar la fertilidad del suelo.", 1, "Alternar cultivos reduce plagas y equilibra los nutrientes."], ["El riego por goteo desperdicia más agua que la inundación.", 0, "Aplica el agua directo a la raíz y ahorra agua."], ["Un suelo con pH 7 es neutro.", 1, "El 7 es el punto neutro de la escala de pH."], ["Las BPA solo sirven para cultivos de exportación.", 0, "Sirven en cualquier producción: mejoran la calidad y la inocuidad."]],
+    "Gestión Administrativa y Tributaria": [["En la partida doble, el débito siempre es igual al crédito.", 1, "Por eso el asiento queda balanceado."], ["El ITBIS general en República Dominicana es del 8 %.", 0, "La tasa general es del 18 %."], ["La DGII autoriza los números de comprobante fiscal (NCF).", 1, "Es la institución que administra los impuestos internos."], ["La ecuación contable es Activo = Pasivo + Patrimonio.", 1, "Los bienes de la empresa se financian con deudas o con aportes propios."], ["Un gasto aumenta por el crédito.", 0, "Los gastos aumentan por el débito."]],
+    "Informática y Comunicaciones": [["Un algoritmo es una secuencia ordenada de pasos.", 1, "Resuelve un problema paso a paso."], ["La memoria RAM conserva sus datos al apagar el equipo.", 0, "Es memoria temporal: se vacía al apagarlo."], ["Una buena contraseña es corta y fácil de adivinar.", 0, "Debe ser larga y única para cada cuenta."], ["El phishing intenta robar datos haciéndose pasar por una entidad de confianza.", 1, "Desconfía de mensajes que te urgen y de enlaces dudosos."], ["Python es un lenguaje de programación.", 1, "Es muy usado para aprender a programar."]],
+    "Enfermería": [["Los 5 momentos de higiene de manos los define la OMS.", 1, "Son la base de la prevención de infecciones asociadas a la atención."], ["Una frecuencia cardíaca de 120 lpm en reposo es normal en un adulto.", 0, "En adultos en reposo lo normal es de 60 a 100 lpm."], ["La temperatura normal de un adulto ronda los 36 a 37 °C.", 1, "Aproximadamente entre 36.1 y 37.2 °C."], ["Los guantes reemplazan el lavado de manos.", 0, "Se usan además de la higiene de manos, nunca en lugar de ella."], ["La saturación de oxígeno normal es de 95 % o más.", 1, "Valores bajos requieren valoración."]]
   };
   var RUBRICA = [['Excelente', '5 de 5', 'Domina el tema y lo explica con seguridad.'], ['Logrado', '4 de 5', 'Comprende lo esencial; repasa un detalle.'], ['En proceso', '3 de 5', 'Entiende parte del tema; necesita practicar.'], ['Inicial', '0 a 2', 'Conviene repasar el tema y volver a intentarlo.']];
 
@@ -262,17 +262,17 @@
     ['comentarios', 'rate_review', 'Danos tu opinión', ['Evaluar'], 'Ayúdanos a mejorar la plataforma.']
   ];
   function hub() {
-    APP.innerHTML = '<h2 class="ac-h">Centro de Actividades</h2><p class="ac-p">Aprende jugando en todas las asignaturas. Cada actividad indica qué nivel de la <strong>Taxonomía de Bloom</strong> trabaja.</p>' + (P ? P.card(true) : '') +
+    APP.innerHTML = '<h2 class="ac-h">Centro de Actividades</h2><p class="ac-p">Aprende jugando en las 4 áreas técnicas. Cada actividad indica qué nivel de la <strong>Taxonomía de Bloom</strong> trabaja.</p>' + (P ? P.card(true) : '') +
       '<div class="ac-list">' + '<a class="ac-act" href="index.html#juego-saberup"><span class="material-symbols-outlined">sports_esports</span><div><strong>Reto SaberUp</strong><br>' + bl(['Recordar', 'Comprender']) + '<br><small>Preguntas con vidas, puntos y rachas.</small></div></a>' +
       ACT.map(function (a) { return '<button type="button" class="ac-act" data-go="' + a[0] + '"><span class="material-symbols-outlined">' + a[1] + '</span><div><strong>' + a[2] + '</strong><br>' + bl(a[3]) + '<br><small>' + a[4] + '</small></div></button>'; }).join('') + '</div>';
     $$('[data-go]').forEach(function (b) { b.addEventListener('click', function () { go(b.getAttribute('data-go')); }); });
   }
   var JUEGOS = {
-    memoria: [memoria, 'Memoria de parejas', ['Recordar'], 'Elige una asignatura y encuentra las 6 parejas.'],
-    clasificar: [clasificar, 'Arrastra y clasifica', ['Analizar', 'Aplicar'], 'Elige una asignatura y clasifica las tarjetas.'],
-    sopa: [sopa, 'Sopa de letras', ['Recordar'], 'Elige una asignatura y encuentra las palabras.'],
-    vf: [vf, 'Verdadero o falso', ['Evaluar', 'Comprender'], 'Elige una asignatura y juzga cada afirmación.'],
-    examen: [examen, 'Mini-examen', ['Recordar', 'Comprender', 'Aplicar'], 'Elige el tema del examen. Verás la rúbrica antes de empezar.']
+    memoria: [memoria, 'Memoria de parejas', ['Recordar'], 'Elige un área técnica y encuentra las 6 parejas.'],
+    clasificar: [clasificar, 'Arrastra y clasifica', ['Analizar', 'Aplicar'], 'Elige un área técnica y clasifica las tarjetas.'],
+    sopa: [sopa, 'Sopa de letras', ['Recordar'], 'Elige un área técnica y encuentra las palabras.'],
+    vf: [vf, 'Verdadero o falso', ['Evaluar', 'Comprender'], 'Elige un área técnica y juzga cada afirmación.'],
+    examen: [examen, 'Mini-examen', ['Recordar', 'Comprender', 'Aplicar'], 'Elige el área del examen. Verás la rúbrica antes de empezar.']
   };
   function route() {
     var v = location.hash.replace('#', '');
