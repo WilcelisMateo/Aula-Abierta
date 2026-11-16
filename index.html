@@ -253,7 +253,7 @@
 <span class="material-symbols-outlined text-[16px] text-tertiary-container">check_circle</span>
           Incluye rúbrica evaluativa
         </div>
-<button class="inline-flex items-center gap-1.5 bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-md text-label-md py-2 px-3.5 rounded-lg shadow-sm transition-all" onclick="showToast('Iniciando descarga segura de la Guía Didáctica (PDF)...', 'info')" type="button">
+<button class="inline-flex items-center gap-1.5 bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-md text-label-md py-2 px-3.5 rounded-lg shadow-sm transition-all" onclick="window.SaberUpDescargas && SaberUpDescargas.byText('hidrologico')" type="button">
 <span class="material-symbols-outlined text-[18px]">file_download</span>
 <span>Descargar Guía</span>
 </button>
@@ -518,6 +518,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 </script>
 <script src="progreso.js"></script>
 <script src="juego-saberup.js"></script>
+<script src="descargas.js"></script>
+<script src="buscar.js"></script>
 <script src="edit-profile.js"></script>
 <script src="tema-navidad.js"></script>
 </body></html>
