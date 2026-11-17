@@ -146,7 +146,7 @@
       if (ind) ind.innerHTML = '<div class="flex items-center gap-1.5 text-on-surface font-label-md text-label-md"><span class="material-symbols-outlined text-[18px] text-secondary">folder_data</span><span class="font-semibold">' + fmt(total) + ' utilizados en este dispositivo</span></div>';
       box.innerHTML = all.length ? all.map(function (m) {
         return '<div class="ar-item">' + (/^image\//.test(m.type) ? '<img class="ar-thumb" alt="" data-th="' + esc(m.id) + '"/>' : '<span class="material-symbols-outlined">' + ico(m) + '</span>') +
-          '<div class="ar-t"><strong>' + esc(m.name) + '</strong><small>' + fmt(m.size || 0) + ' · ' + new Date(m.createdAt).toLocaleDateString('es-DO') + '</small></div>' +
+          '<div class="ar-t"><strong>' + esc(m.name) + '</strong><small>' + fmt(m.size || 0) + ' · ' + new Date(m.createdAt).toLocaleDateString('es-DO', { timeZone: 'America/Santo_Domingo' }) + '</small></div>' +
           '<button type="button" class="ar-b" data-dl="' + esc(m.id) + '">Descargar</button><button type="button" class="ar-b x" data-del="' + esc(m.id) + '" aria-label="Eliminar ' + esc(m.name) + '">✕</button></div>';
       }).join('') : '<p class="ar-empty">Todavía no has subido archivos. Pulsa «+ Subir» para agregar PDF, Word, imágenes, videos y más.</p>';
       all.forEach(function (m) { var im = $('[data-th="' + m.id + '"]', box); if (im && m.blob) im.src = URL.createObjectURL(m.blob); });

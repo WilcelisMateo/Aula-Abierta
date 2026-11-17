@@ -41,6 +41,39 @@
     "Informática y Comunicaciones": [["Un algoritmo es una secuencia ordenada de pasos.", 1, "Resuelve un problema paso a paso."], ["La memoria RAM conserva sus datos al apagar el equipo.", 0, "Es memoria temporal: se vacía al apagarlo."], ["Una buena contraseña es corta y fácil de adivinar.", 0, "Debe ser larga y única para cada cuenta."], ["El phishing intenta robar datos haciéndose pasar por una entidad de confianza.", 1, "Desconfía de mensajes que te urgen y de enlaces dudosos."], ["Python es un lenguaje de programación.", 1, "Es muy usado para aprender a programar."]],
     "Enfermería": [["Los 5 momentos de higiene de manos los define la OMS.", 1, "Son la base de la prevención de infecciones asociadas a la atención."], ["Una frecuencia cardíaca de 120 lpm en reposo es normal en un adulto.", 0, "En adultos en reposo lo normal es de 60 a 100 lpm."], ["La temperatura normal de un adulto ronda los 36 a 37 °C.", 1, "Aproximadamente entre 36.1 y 37.2 °C."], ["Los guantes reemplazan el lavado de manos.", 0, "Se usan además de la higiene de manos, nunca en lugar de ella."], ["La saturación de oxígeno normal es de 95 % o más.", 1, "Valores bajos requieren valoración."]]
   };
+  /* Pasos tomados de los recursos descargables: guía de compost, rúbrica del asiento, ficha de pseudocódigo y lista de cotejo */
+  var ORD = {
+    "Agropecuaria": [
+      "Elige un lugar sombreado y con buen drenaje",
+      "Arma capas alternas de material seco y material verde",
+      "Humedece hasta que quede como una esponja escurrida",
+      "Voltea la pila cada 7 a 10 días",
+      "Comprueba que huela a tierra de bosque: el compost está listo"
+    ],
+    "Gestión Administrativa y Tributaria": [
+      "Identifica el documento fuente (factura, recibo, cheque)",
+      "Analiza qué cuentas se afectan",
+      "Clasifica cada cuenta: activo, pasivo, patrimonio, ingreso o gasto",
+      "Aplica las reglas de débito y crédito",
+      "Registra en el libro diario con fecha, cuentas, monto y concepto"
+    ],
+    "Informática y Comunicaciones": [
+      "Inicio",
+      "Leer precio",
+      "itbis ← precio * 0.18",
+      "total ← precio + itbis",
+      "Escribir total",
+      "Fin"
+    ],
+    "Enfermería": [
+      "Retira joyas y verifica que las manos no estén visiblemente sucias",
+      "Aplica suficiente producto para cubrir toda la superficie",
+      "Frota palmas, dorso y espacios interdigitales",
+      "Frota pulgares y yemas de los dedos",
+      "Frota hasta que se seque, sin usar toallas"
+    ]
+  };
+
   var RUBRICA = [['Excelente', '5 de 5', 'Domina el tema y lo explica con seguridad.'], ['Logrado', '4 de 5', 'Comprende lo esencial; repasa un detalle.'], ['En proceso', '3 de 5', 'Entiende parte del tema; necesita practicar.'], ['Inicial', '0 a 2', 'Conviene repasar el tema y volver a intentarlo.']];
 
   /* ───────── piezas comunes ───────── */
@@ -57,8 +90,8 @@
   function end(title, bloom, area, n, total, xp, badge, again) {
     var st = n >= total ? 3 : n >= total * 0.6 ? 2 : 1;
     shell(title + ' · ' + area, bloom, '<div class="ac-card ac-center"><div class="ac-big">' + stars(st) + '</div><p class="ac-p">' + n + ' de ' + total + (st === 3 ? ' — ¡Perfecto!' : ' — ¡Buen trabajo, sigue practicando!') + '</p>' +
-      '<div class="ac-row"><button type="button" class="ac-btn ac-pri" id="ac-again">Jugar otra vez</button><button type="button" class="ac-btn" id="ac-hub">Más actividades</button></div></div>');
-    $('#ac-again').addEventListener('click', again); $('#ac-hub').addEventListener('click', function () { go(''); });
+      '<div class="ac-row"><button type="button" class="ac-btn ac-pri" id="ac-again">Jugar otra vez</button><button type="button" class="ac-btn" id="ac-hub">Más actividades</button></div></div>' + recCard(area));
+    bindRec(); $('#ac-again').addEventListener('click', again); $('#ac-hub').addEventListener('click', function () { go(''); });
     if (P) P.award(xp + st * 3, st === 3 ? badge : null);
   }
 
@@ -196,11 +229,38 @@
         var nivel = ok === 5 ? 'Excelente' : ok === 4 ? 'Logrado' : ok === 3 ? 'En proceso' : 'Inicial';
         shell('Resultado · ' + area, ['Recordar', 'Comprender', 'Aplicar'], '<div class="ac-card ac-center"><div class="ac-big">' + ok + ' / 5</div><p class="ac-q">Nivel alcanzado: ' + nivel + '</p></div>' + rub +
           (mis.length ? '<h3 class="ac-h3">Para repasar</h3>' + mis.map(function (m) { return '<div class="ac-fb b"><strong>' + esc(m.q.q) + '</strong><br>Marcaste: ' + esc(m.t) + '<br>Correcta: ' + esc(m.q.o[m.q.c]) + '. ' + esc(m.q.e) + '</div>'; }).join('') : '<p class="ac-p">¡Sin errores! 🎉</p>') +
-          '<div class="ac-row"><button type="button" class="ac-btn ac-pri" id="to-ae">Mi autoevaluación</button><button type="button" class="ac-btn" id="rt">Reintentar</button></div>');
+          '<div class="ac-row"><button type="button" class="ac-btn ac-pri" id="to-ae">Mi autoevaluación</button><button type="button" class="ac-btn" id="rt">Reintentar</button></div>' + recCard(area));
+        bindRec();
         var tr = $('tr[data-n="' + nivel + '"]'); if (tr) tr.classList.add('hit');
         $('#to-ae').addEventListener('click', function () { go('autoevaluacion'); }); $('#rt').addEventListener('click', function () { examen(area); });
         if (P) P.award(5 + ok * 4, ok >= 4 ? 'examen' : null);
       }
+    });
+  }
+
+  function recCard(area) {
+    var k = KS.indexOf(area), r = (window.SABERUP_RECURSOS || [])[k];
+    return r ? '<div class="ac-card"><strong>📄 Recurso del área</strong><p class="ac-p" style="margin:4px 0 10px">' + esc(r.title) + '</p><button type="button" class="ac-btn ac-pri" data-rec="' + k + '">Descargar PDF</button></div>' : '';
+  }
+  function bindRec() {
+    $$('[data-rec]').forEach(function (b) {
+      b.addEventListener('click', function () { var r = window.SABERUP_RECURSOS[+b.getAttribute('data-rec')]; if (r && window.SaberUpDescargas) window.SaberUpDescargas.byText(r.title); });
+    });
+  }
+
+  /* ───────── 1b. Ordena los pasos (basado en los recursos) ───────── */
+  function ordenar(area) {
+    var steps = ORD[area], pool = mix(steps.map(function (t, i) { return { t: t, i: i }; })), next = 0, errs = 0;
+    shell('Ordena los pasos · ' + area, ['Aplicar', 'Comprender'], '<p class="ac-p">Toca los pasos en el orden correcto. Errores: <strong id="er">0</strong></p><div class="ac-card"><ol class="ac-ol" id="done"></ol></div><div class="ac-pool" id="pool">' +
+      pool.map(function (o) { return '<button type="button" class="ac-chip" data-i="' + o.i + '">' + esc(o.t) + '</button>'; }).join('') + '</div><p class="ac-p" id="msg" aria-live="polite"></p>');
+    $$('.ac-chip').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var i = +b.getAttribute('data-i');
+        if (i === next) {
+          var li = document.createElement('li'); li.textContent = steps[i]; $('#done').appendChild(li); b.remove(); next++; $('#msg').textContent = '¡Correcto!';
+          if (next === steps.length) { var n = errs === 0 ? 3 : errs <= 2 ? 2 : 1; end('Ordena los pasos', ['Aplicar', 'Comprender'], area, n, 3, 15, 'orden', function () { ordenar(area); }); }
+        } else { errs++; $('#er').textContent = errs; $('#msg').textContent = 'Ese no es el siguiente paso. ¡Inténtalo de nuevo!'; b.classList.add('bad'); setTimeout(function () { b.classList.remove('bad'); }, 500); }
+      });
     });
   }
 
@@ -256,6 +316,7 @@
     ['memoria', 'extension', 'Memoria de parejas', ['Recordar'], 'Une conceptos con su significado.'],
     ['clasificar', 'swap_horiz', 'Arrastra y clasifica', ['Analizar', 'Aplicar'], 'Ordena tarjetas en el grupo correcto.'],
     ['sopa', 'grid_view', 'Sopa de letras', ['Recordar'], 'Encuentra las palabras del tema.'],
+    ['ordenar', 'format_list_numbered', 'Ordena los pasos', ['Aplicar', 'Comprender'], 'Secuencia los procedimientos de los recursos técnicos.'],
     ['vf', 'rule', 'Verdadero o falso', ['Evaluar', 'Comprender'], 'Decide y aprende por qué.'],
     ['examen', 'assignment', 'Mini-examen', ['Recordar', 'Comprender', 'Aplicar'], 'Por tema, con rúbrica visible.'],
     ['autoevaluacion', 'psychology', '¿Qué aprendí hoy?', ['Evaluar'], 'Reflexiona sobre tu aprendizaje.'],
@@ -263,7 +324,7 @@
   ];
   function hub() {
     APP.innerHTML = '<h2 class="ac-h">Centro de Actividades</h2><p class="ac-p">Aprende jugando en las 4 áreas técnicas. Cada actividad indica qué nivel de la <strong>Taxonomía de Bloom</strong> trabaja.</p>' + (P ? P.card(true) : '') +
-      '<div class="ac-list">' + '<a class="ac-act" href="index.html#juego-saberup"><span class="material-symbols-outlined">sports_esports</span><div><strong>Reto SaberUp</strong><br>' + bl(['Recordar', 'Comprender']) + '<br><small>Preguntas con vidas, puntos y rachas.</small></div></a>' +
+      '<div class="ac-list">' + '<a class="ac-act" href="index.html#reto-del-dia"><span class="material-symbols-outlined">today</span><div><strong>🎯 Reto del día</strong><br>' + bl(['Recordar', 'Comprender']) + '<br><small>Un reto nuevo cada día, con racha y XP extra.</small></div></a>' + '<a class="ac-act" href="index.html#juego-saberup"><span class="material-symbols-outlined">sports_esports</span><div><strong>Reto SaberUp</strong><br>' + bl(['Recordar', 'Comprender']) + '<br><small>Preguntas con vidas, puntos y rachas.</small></div></a>' +
       ACT.map(function (a) { return '<button type="button" class="ac-act" data-go="' + a[0] + '"><span class="material-symbols-outlined">' + a[1] + '</span><div><strong>' + a[2] + '</strong><br>' + bl(a[3]) + '<br><small>' + a[4] + '</small></div></button>'; }).join('') + '</div>';
     $$('[data-go]').forEach(function (b) { b.addEventListener('click', function () { go(b.getAttribute('data-go')); }); });
   }
@@ -271,6 +332,7 @@
     memoria: [memoria, 'Memoria de parejas', ['Recordar'], 'Elige un área técnica y encuentra las 6 parejas.'],
     clasificar: [clasificar, 'Arrastra y clasifica', ['Analizar', 'Aplicar'], 'Elige un área técnica y clasifica las tarjetas.'],
     sopa: [sopa, 'Sopa de letras', ['Recordar'], 'Elige un área técnica y encuentra las palabras.'],
+    ordenar: [ordenar, 'Ordena los pasos', ['Aplicar', 'Comprender'], 'Elige un área técnica y ordena el procedimiento paso a paso.'],
     vf: [vf, 'Verdadero o falso', ['Evaluar', 'Comprender'], 'Elige un área técnica y juzga cada afirmación.'],
     examen: [examen, 'Mini-examen', ['Recordar', 'Comprender', 'Aplicar'], 'Elige el área del examen. Verás la rúbrica antes de empezar.']
   };

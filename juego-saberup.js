@@ -44,6 +44,16 @@
     ]}
   };
 
+  // Preguntas basadas en los recursos descargables (guía de compost, rúbrica del asiento, ficha de pseudocódigo, lista de cotejo)
+  BANCO["Agropecuaria"].preguntas.push({ q: "Según la guía de compost, ¿cada cuánto se voltea la pila?", o: ["Cada 7 a 10 días", "Una vez al año", "Todos los días", "Nunca"], c: 0, e: "Voltear airea la pila y acelera la descomposición." },
+    { q: "¿Cómo debe quedar la humedad del compost?", o: ["Seca como polvo", "Como una esponja escurrida", "Encharcada", "Congelada"], c: 1, e: "Ni muy seca ni encharcada: así trabajan los microorganismos." });
+  BANCO["Gestión Administrativa y Tributaria"].preguntas.push({ q: "Compra de mercancía al contado por RD$ 10,000: ¿qué cuenta se debita?", o: ["Efectivo en caja", "Inventario de mercancías", "Ventas", "Cuentas por pagar"], c: 1, e: "El inventario (activo) aumenta por el débito; el efectivo disminuye por el crédito." },
+    { q: "Un alquiler pagado en efectivo se registra con débito a…", o: ["Gasto de alquiler", "Ventas", "Cuentas por cobrar", "Patrimonio"], c: 0, e: "Los gastos aumentan por el débito y el efectivo disminuye por el crédito." });
+  BANCO["Informática y Comunicaciones"].preguntas.push({ q: "En el ejemplo del ITBIS, ¿qué hace «itbis = precio * 0.18»?", o: ["Calcula el 18 % del precio", "Suma 18 al precio", "Resta el ITBIS", "Lee el precio"], c: 0, e: "Multiplica el precio por 0.18, que equivale al 18 %." },
+    { q: "¿Qué estructura usa «Si nota >= 70 entonces Aprobado»?", o: ["Secuencial", "Condicional", "Repetitiva", "Ninguna"], c: 1, e: "Decide entre caminos según una condición." });
+  BANCO["Enfermería"].preguntas.push({ q: "¿Cuál es el momento 2 de higiene de manos de la OMS?", o: ["Después del contacto con el paciente", "Antes de realizar una tarea limpia o aséptica", "Después de tocar el entorno", "Al terminar el turno"], c: 1, e: "Es antes de una tarea limpia o aséptica, como preparar un medicamento." },
+    { q: "Si las manos están visiblemente sucias, ¿qué se hace?", o: ["Solo fricción con alcohol", "Lavado con agua y jabón de 40 a 60 segundos", "Usar guantes y seguir", "Secarlas al aire"], c: 1, e: "Con suciedad visible se prefiere agua y jabón." });
+
   window.SABERUP_BANCO = BANCO; // lo usa el mini-examen de actividades.html
   var MIXTO = 'Reto mixto';
   var VIDAS = 3;
@@ -90,6 +100,8 @@
       '.sg-area:hover{background:#dcefe0}',
       '.sg-area .material-symbols-outlined{font-size:26px;color:#b3202a}',
       '.sg-area small{font-weight:400;font-size:13px;color:#4a4944}',
+      '.sg-daily{grid-column:1/-1;display:flex;align-items:center;gap:10px;background:#ffd166;color:#3b2a00}',
+      '.sg-daily:hover{background:#ffe08a}',
       '.sg-mix{grid-column:1/-1;background:#ffd166;color:#3b2a00;flex-direction:row;align-items:center;gap:10px}',
       '.sg-mix:hover{background:#ffe08a}',
       '.sg-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:600;font-size:15px}',
@@ -120,13 +132,40 @@
   }
 
   /* ───── pantallas ───── */
+
+  /* ───── Reto del día (según la fecha real de República Dominicana) ───── */
+  function F() { return window.SaberUpFecha; }
+  function fkey() { return F() ? F().clave() : new Date().toISOString().slice(0, 10); }
+  function diaIdx() { return F() ? F().diaAnio() : Math.floor(Date.now() / 86400000); }
+  function hoyTxt() { return F() ? F().fmt(new Date(), { weekday: 'long', day: 'numeric', month: 'long' }) : ''; }
+  function hash(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(seed) { var a = seed >>> 0; return function () { a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function areaDelDia() { var ks = Object.keys(BANCO); return ks[diaIdx() % ks.length]; }
+  function listaDelDia(area) {
+    var r = rng(hash(fkey() + area)), a = BANCO[area].preguntas.slice();
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a.slice(0, 5);
+  }
+  function diario() { try { return JSON.parse(localStorage.getItem('saberup_reto_dia')) || {}; } catch (e) { return {}; } }
+  function empezarDia() {
+    var area = areaDelDia();
+    G = { area: area, lista: listaDelDia(area), i: 0, pts: 0, vidas: VIDAS, racha: 0, aciertos: 0, respondida: false, daily: true };
+    pregunta();
+  }
+
+  function dailyCard() {
+    var d = diario(), hecho = d.ultimo === fkey(), area = areaDelDia();
+    return '<button type="button" class="sg-btn sg-daily" id="sg-daily"><span class="material-symbols-outlined" aria-hidden="true">today</span><span>🎯 Reto del día · ' + esc(hoyTxt()) +
+      '<small style="display:block">Área: ' + esc(area) + ' · 5 preguntas · ' + (hecho ? '✅ ¡Completado hoy!' : '+10 XP extra') + (d.racha ? ' · 🔥 Racha: ' + d.racha + ' día(s)' : '') + '</small></span></button>';
+  }
+
   function menu() {
     G = null;
     var h = '<span class="sg-badge"><span class="material-symbols-outlined" style="font-size:16px" aria-hidden="true">sports_esports</span>Aprende jugando</span>' +
       '<h2>Reto SaberUp</h2><p>Responde, suma puntos y conserva tus 3 vidas. Aprenderás por qué después de cada pregunta.</p>' +
       '<div style="margin-top:8px">' + (window.SaberUpProgreso ? SaberUpProgreso.bloom(['Recordar', 'Comprender']) : '') + '</div>' +
       (window.SaberUpProgreso ? SaberUpProgreso.card(false) : '') +
-      '<div class="sg-grid">';
+      '<div class="sg-grid">' + dailyCard();
     Object.keys(BANCO).forEach(function (a) {
       var b = mejor(a);
       h += '<button type="button" class="sg-btn sg-area" data-area="' + esc(a) + '">' +
@@ -135,11 +174,12 @@
     });
     h += '<button type="button" class="sg-btn sg-area sg-mix" data-area="' + MIXTO + '">' +
       '<span class="material-symbols-outlined" aria-hidden="true">shuffle</span><span>' + MIXTO +
-      '<small style="display:block">8 preguntas de todas las áreas' + (mejor(MIXTO) ? ' · Mejor: ' + mejor(MIXTO) + ' pts' : '') + '</small></span></button></div>';
+      '<small style="display:block">8 preguntas de las 4 áreas técnicas' + (mejor(MIXTO) ? ' · Mejor: ' + mejor(MIXTO) + ' pts' : '') + '</small></span></button></div>';
     ROOT.innerHTML = '<div class="sg">' + h + '</div>';
     Array.prototype.forEach.call(ROOT.querySelectorAll('[data-area]'), function (b) {
       b.addEventListener('click', function () { empezar(b.getAttribute('data-area')); });
     });
+    var dd = document.getElementById('sg-daily'); if (dd) dd.addEventListener('click', empezarDia);
   }
 
   function empezar(area) {
@@ -149,7 +189,7 @@
       Object.keys(BANCO).forEach(function (a) { lista = lista.concat(BANCO[a].preguntas); });
       lista = barajar(lista).slice(0, 8);
     } else {
-      lista = barajar(BANCO[area].preguntas);
+      lista = barajar(BANCO[area].preguntas).slice(0, 6);
     }
     G = { area: area, lista: lista, i: 0, pts: 0, vidas: VIDAS, racha: 0, aciertos: 0, respondida: false };
     pregunta();
@@ -162,7 +202,7 @@
     G.ops = ops; G.respondida = false;
     var vidas = '';
     for (var v = 0; v < VIDAS; v++) vidas += v < G.vidas ? '❤️' : '🤍';
-    var h = '<div class="sg-top"><span class="sg-pill">' + esc(G.area) + '</span><span aria-label="Vidas">' + vidas + '</span><span class="sg-pill">⭐ ' + G.pts + '</span></div>' +
+    var h = '<div class="sg-top"><span class="sg-pill">' + (G.daily ? '🎯 ' : '') + esc(G.area) + '</span><span aria-label="Vidas">' + vidas + '</span><span class="sg-pill">⭐ ' + G.pts + '</span></div>' +
       '<div class="sg-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + G.lista.length + '" aria-valuenow="' + G.i + '"><i style="width:' + (G.i / G.lista.length * 100) + '%"></i></div>' +
       '<p style="margin:0;font-size:14px">Pregunta ' + (G.i + 1) + ' de ' + G.lista.length + (G.racha > 1 ? ' · 🔥 Racha x' + G.racha : '') + '</p>' +
       '<div class="sg-q">' + esc(p.q) + '</div><div class="sg-opts">';
@@ -213,11 +253,17 @@
     if (window.SaberUpProgreso) {
       var badge = estrellas === 3 ? 'estrellas' : (G.maxR >= 3 ? 'racha' : 'primera');
       SaberUpProgreso.award(5 + Math.round(G.pts / 2), badge);
+      if (G.daily && diario().ultimo !== fkey()) {
+        var dd0 = diario(), ayer = F() ? F().clave(F().add(-1)) : '', racha = dd0.ultimo === ayer ? (dd0.racha || 0) + 1 : 1;
+        try { localStorage.setItem('saberup_reto_dia', JSON.stringify({ ultimo: fkey(), racha: racha })); } catch (e) { /* sin almacenamiento */ }
+        G.rachaDia = racha;
+        setTimeout(function () { SaberUpProgreso.award(10, racha >= 3 ? 'constancia' : null); }, 1600);
+      }
     }
     ROOT.innerHTML = '<div class="sg sg-end"><span class="sg-badge">Resultado · ' + esc(area) + '</span>' +
       '<div class="sg-stars" aria-label="' + estrellas + ' de 3 estrellas">' + st + '</div>' +
       '<div class="sg-score">' + G.pts + ' pts</div>' +
-      '<p>' + G.aciertos + ' de ' + total + ' respuestas correctas</p><p>' + msg + (rec && G.pts > 0 ? ' 🏆 ¡Nuevo récord!' : '') + '</p>' +
+      (G.daily ? '<p>🎯 Reto del día' + (G.rachaDia ? ' · 🔥 Racha: ' + G.rachaDia + ' día(s)' : ' (ya lo habías completado hoy)') + '</p>' : '') + '<p>' + G.aciertos + ' de ' + total + ' respuestas correctas</p><p>' + msg + (rec && G.pts > 0 ? ' 🏆 ¡Nuevo récord!' : '') + '</p>' +
       '<div class="sg-row"><button type="button" class="sg-btn sg-next" id="sg-again" style="margin-top:0">Jugar otra vez</button>' +
       '<button type="button" class="sg-btn sg-alt" id="sg-menu">Cambiar de área</button></div></div>';
     document.getElementById('sg-again').addEventListener('click', function () { empezar(area); });
@@ -229,6 +275,7 @@
     if (!ROOT) return;
     css();
     menu();
+    if (location.hash === '#reto-del-dia') { empezarDia(); ROOT.scrollIntoView(); }
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

@@ -5,7 +5,7 @@
   var LV = [[0, 'Explorador', '🧭'], [60, 'Aprendiz', '📚'], [150, 'Investigador', '🔬'], [300, 'Maestro del Saber', '🏆']];
   var BD = { primera: ['Primer paso', '🌱'], racha: ['Racha de fuego', '🔥'], estrellas: ['Tres estrellas', '🌟'], memoria: ['Memoria de elefante', '🐘'],
     clasif: ['Gran clasificador', '🗂️'], sopa: ['Detective de palabras', '🔍'], vf: ['Ojo crítico', '🧐'], examen: ['Examen aprobado', '📝'],
-    reflexion: ['Mente reflexiva', '💭'], opinion: ['Voz de la comunidad', '💬'] };
+    reflexion: ['Mente reflexiva', '💭'], opinion: ['Voz de la comunidad', '💬'], orden: ['Maestro del procedimiento', '📋'], constancia: ['Constancia diaria', '📅'] };
   var BL = { Recordar: '🧠', Comprender: '💡', Aplicar: '🛠️', Analizar: '🔎', Evaluar: '⚖️', Crear: '🎨' };
 
   function load() { try { return JSON.parse(localStorage.getItem('saberup_progreso')) || { xp: 0, b: {} }; } catch (e) { return { xp: 0, b: {} }; } }
@@ -26,7 +26,7 @@
       '.pg-toast{position:fixed;left:50%;top:84px;transform:translateX(-50%);z-index:400;background:#0a2e1f;color:#fff;border:2px solid #d4a72c;padding:12px 18px;border-radius:14px;font:600 15px/22px "Source Sans 3",sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.3);max-width:90vw;text-align:center}';
     document.head.appendChild(s);
   }
-  function toast(t) { css(); var e = document.createElement('div'); e.className = 'pg-toast'; e.setAttribute('role', 'status'); e.textContent = t; document.body.appendChild(e); setTimeout(function () { e.remove(); }, 3200); }
+  function toast(t) { css(); Array.prototype.forEach.call(document.querySelectorAll('.pg-toast'), function (x) { x.remove(); }); var e = document.createElement('div'); e.className = 'pg-toast'; e.setAttribute('role', 'status'); e.textContent = t; document.body.appendChild(e); setTimeout(function () { e.remove(); }, 3200); }
 
   window.SaberUpProgreso = {
     award: function (xp, badge) {

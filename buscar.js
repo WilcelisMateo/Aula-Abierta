@@ -5,6 +5,8 @@
   var STATIC = [
     ['Centro de Actividades', 'Juegos técnicos, mini-examen, autoevaluación y comentarios', 'actividades.html', 'extension', 'juegos aprender actividades bloom insignias niveles'],
     ['Reto SaberUp', 'Preguntas con vidas, puntos y rachas', 'index.html#juego-saberup', 'sports_esports', 'juego quiz preguntas reto'],
+    ['Reto del día', 'Un reto nuevo cada día con racha y XP extra', 'index.html#reto-del-dia', 'today', 'reto diario dia racha xp'],
+    ['Ordena los pasos', 'Secuencia procedimientos de los recursos técnicos', 'actividades.html#ordenar', 'format_list_numbered', 'ordenar pasos secuencia procedimiento'],
     ['Memoria de parejas', 'Une conceptos con su significado', 'actividades.html#memoria', 'extension', 'memoria parejas juego'],
     ['Arrastra y clasifica', 'Clasifica tarjetas en el grupo correcto', 'actividades.html#clasificar', 'swap_horiz', 'arrastrar soltar clasificar'],
     ['Sopa de letras', 'Encuentra las palabras del tema', 'actividades.html#sopa', 'grid_view', 'sopa letras palabras'],

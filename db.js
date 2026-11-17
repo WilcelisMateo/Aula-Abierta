@@ -96,24 +96,28 @@ class StorageService {
       <p style="margin:4px 0;"><strong>Duración sugerida:</strong> ${duracion}</p></div>`;
   }
 
+  _ago(days) { return Date.now() - days * 86400000; }
+
+  _seedAges() { return {'art-compost-suelo': 2, 'art-bpa-borrador': 1, 'art-asiento-contable': 5, 'art-itbis-ncf': 7, 'art-algoritmos': 9, 'art-ciberseguridad': 12, 'art-higiene-manos': 3, 'art-signos-vitales': 14, 'media-compost': 2, 'media-asiento': 5, 'media-bioseguridad': 3}; }
+
   _contentSeeds() {
     const A = 'Lic. Wilcelis Mateo', R = 'Docente de Educación Técnico Profesional';
     const base = (o) => Object.assign({ author: A, role: R, status: 'published', views: 0 }, o);
     const articles = [
       base({ id: 'art-compost-suelo', title: 'Compost y manejo del suelo en la finca escolar', subject: 'Agropecuaria', grade: 'Bachillerato Técnico • 4to', readTime: 6, views: 1820,
         summary: 'Cómo transformar residuos orgánicos en abono, mejorar la fertilidad del suelo y aplicar prácticas sostenibles en la finca escolar.',
-        coverImage: 'portada-agropecuaria.svg', coverAlt: 'Portada del área Agropecuaria', createdAt: new Date('2026-10-14T08:30:00Z').getTime(),
+        coverImage: 'portada-agropecuaria.svg', coverAlt: 'Portada del área Agropecuaria', createdAt: this._ago(2),
         tags: ['Agropecuaria', 'Compost', 'SuelosSostenibles'],
         content: this._ficha('Producción vegetal y manejo del suelo', 'Aplica técnicas de producción agrícola sostenible', 'Elabora y monitorea una pila de compost con registro técnico.', '3 sesiones de 90 min') +
           `<h2>1. ¿Por qué compostar?</h2><p>El compostaje convierte restos de cocina y de la finca en abono mediante la descomposición aeróbica. Mejora la estructura del suelo, su capacidad de retener agua y la vida microbiana, y reduce el gasto en fertilizantes.</p>
           <h2>2. Receta básica</h2><ul><li><strong>Material verde</strong> (restos frescos de frutas, vegetales, césped): aporta nitrógeno.</li><li><strong>Material seco</strong> (hojas, paja, cartón): aporta carbono. Usa unas 2 a 3 partes secas por 1 verde, en volumen.</li><li>Mantén la humedad como una esponja escurrida y voltea la pila cada 7 a 10 días.</li><li>Evita carnes, grasas, lácteos y heces de mascotas.</li></ul>
           <h2>3. Registro de la práctica</h2><p>Anota cada semana: fecha, temperatura, humedad, olor y acciones realizadas. Un compost bien manejado se calienta entre 55 y 65 °C en su fase inicial y huele a tierra de bosque cuando está listo.</p>` }),
       base({ id: 'art-bpa-borrador', title: 'Buenas Prácticas Agrícolas (BPA) en cultivos de ciclo corto', subject: 'Agropecuaria', grade: 'Bachillerato Técnico • 5to', readTime: 5, status: 'draft',
-        summary: 'Registro, higiene y manejo seguro de insumos en la producción de cultivos de ciclo corto.', coverImage: 'portada-agropecuaria.svg', coverAlt: 'Portada del área Agropecuaria', createdAt: new Date('2026-10-15T09:00:00Z').getTime(),
+        summary: 'Registro, higiene y manejo seguro de insumos en la producción de cultivos de ciclo corto.', coverImage: 'portada-agropecuaria.svg', coverAlt: 'Portada del área Agropecuaria', createdAt: this._ago(1),
         tags: ['BPA', 'CultivosCicloCorto', 'Inocuidad'],
         content: '<h2>Producir con calidad e inocuidad</h2><p>Borrador en construcción. Pendiente de anexar la lista de cotejo de campo y la rúbrica del módulo.</p>' }),
       base({ id: 'art-asiento-contable', title: 'El asiento contable paso a paso: del documento fuente al libro diario', subject: 'Gestión Administrativa y Tributaria', grade: 'Bachillerato Técnico • 4to', readTime: 7, views: 1430,
-        summary: 'Aprende a registrar operaciones comerciales aplicando la partida doble, sin perderte en el proceso.', coverImage: 'portada-gestion.svg', coverAlt: 'Portada del área Gestión Administrativa y Tributaria', createdAt: new Date('2026-10-20T10:00:00Z').getTime(),
+        summary: 'Aprende a registrar operaciones comerciales aplicando la partida doble, sin perderte en el proceso.', coverImage: 'portada-gestion.svg', coverAlt: 'Portada del área Gestión Administrativa y Tributaria', createdAt: this._ago(5),
         tags: ['Contabilidad', 'PartidaDoble', 'LibroDiario'],
         content: this._ficha('Contabilidad general y registro de operaciones', 'Registra operaciones comerciales según principios contables', 'Registra en el libro diario operaciones aplicando la partida doble.', '4 sesiones de 90 min') +
           `<h2>1. La partida doble</h2><p>Toda operación afecta al menos dos cuentas y el total de los débitos siempre es igual al total de los créditos.</p>
@@ -121,7 +125,7 @@ class StorageService {
           <h2>3. Ejemplo</h2><p>Compra de mercancía al contado por RD$ 10,000:</p><ul><li><strong>Débito:</strong> Inventario de mercancías, RD$ 10,000</li><li><strong>Crédito:</strong> Efectivo en caja, RD$ 10,000</li></ul>
           <p>Recuerda: los activos y los gastos aumentan por el débito; los pasivos, el patrimonio y los ingresos aumentan por el crédito.</p>` }),
       base({ id: 'art-itbis-ncf', title: 'ITBIS y comprobantes fiscales (NCF): lo básico para el módulo tributario', subject: 'Gestión Administrativa y Tributaria', grade: 'Bachillerato Técnico • 5to', readTime: 6, views: 980,
-        summary: 'Calcula el ITBIS de una venta y reconoce para qué sirven los comprobantes fiscales.', coverImage: 'portada-gestion.svg', coverAlt: 'Portada del área Gestión Administrativa y Tributaria', createdAt: new Date('2026-10-24T10:00:00Z').getTime(),
+        summary: 'Calcula el ITBIS de una venta y reconoce para qué sirven los comprobantes fiscales.', coverImage: 'portada-gestion.svg', coverAlt: 'Portada del área Gestión Administrativa y Tributaria', createdAt: this._ago(7),
         tags: ['ITBIS', 'NCF', 'DGII'],
         content: this._ficha('Obligaciones tributarias', 'Cumple obligaciones fiscales de una empresa', 'Calcula el ITBIS de una venta e identifica el tipo de comprobante fiscal.', '3 sesiones de 90 min') +
           `<h2>1. ¿Qué es el ITBIS?</h2><p>Es el Impuesto sobre Transferencias de Bienes Industrializados y Servicios. La tasa general es del 18 %, aunque algunos bienes y servicios están exentos o tienen un tratamiento distinto.</p>
@@ -129,7 +133,7 @@ class StorageService {
           <h2>2. Comprobantes fiscales</h2><p>El Número de Comprobante Fiscal (NCF) lo autoriza la DGII y respalda ventas, compras y gastos. Por ejemplo, la factura de crédito fiscal (serie B01) y la factura de consumo (serie B02).</p>
           <h2>3. Declaración</h2><p>El ITBIS se declara mensualmente, en el formulario IT-1, dentro de los primeros 20 días del mes siguiente. Verifica siempre la norma vigente en dgii.gov.do.</p>` }),
       base({ id: 'art-algoritmos', title: 'Pensamiento algorítmico: del pseudocódigo a tu primer programa', subject: 'Informática y Comunicaciones', grade: 'Bachillerato Técnico • 4to', readTime: 7, views: 1610,
-        summary: 'Aprende a diseñar algoritmos en pseudocódigo y conviértelos en un programa funcional.', coverImage: 'portada-informatica.svg', coverAlt: 'Portada del área Informática y Comunicaciones', createdAt: new Date('2026-10-28T10:00:00Z').getTime(),
+        summary: 'Aprende a diseñar algoritmos en pseudocódigo y conviértelos en un programa funcional.', coverImage: 'portada-informatica.svg', coverAlt: 'Portada del área Informática y Comunicaciones', createdAt: this._ago(9),
         tags: ['Programación', 'Algoritmos', 'Pseudocódigo'],
         content: this._ficha('Lógica de programación', 'Desarrolla soluciones informáticas a problemas simples', 'Diseña algoritmos en pseudocódigo y los traduce a un lenguaje de programación.', '4 sesiones de 90 min') +
           `<h2>1. ¿Qué es un algoritmo?</h2><p>Es una secuencia finita y ordenada de pasos para resolver un problema. Sus estructuras básicas son la secuencial, la condicional (si… entonces) y la repetitiva (mientras… / para…).</p>
@@ -143,20 +147,20 @@ Fin</code></pre>
 itbis = precio * 0.18
 print("Total:", precio + itbis)</code></pre><p>Prueba con varios valores y verifica que el resultado sea el esperado antes de seguir.</p>` }),
       base({ id: 'art-ciberseguridad', title: 'Ciberseguridad en el taller: contraseñas, phishing y respaldo 3-2-1', subject: 'Informática y Comunicaciones', grade: 'Módulo formativo • 5to', readTime: 6, views: 1210,
-        summary: 'Hábitos simples que protegen tus cuentas, tus equipos y tu información.', coverImage: 'portada-informatica.svg', coverAlt: 'Portada del área Informática y Comunicaciones', createdAt: new Date('2026-11-02T10:00:00Z').getTime(),
+        summary: 'Hábitos simples que protegen tus cuentas, tus equipos y tu información.', coverImage: 'portada-informatica.svg', coverAlt: 'Portada del área Informática y Comunicaciones', createdAt: this._ago(12),
         tags: ['Ciberseguridad', 'Phishing', 'Respaldo'],
         content: this._ficha('Seguridad informática y redes', 'Protege la información y los equipos de una organización', 'Aplica medidas básicas de seguridad y reconoce intentos de phishing.', '2 sesiones de 90 min') +
           `<h2>1. Contraseñas fuertes</h2><ul><li>Usa frases largas (12 caracteres o más) y distintas para cada cuenta.</li><li>Guarda tus claves en un gestor de contraseñas.</li><li>Activa la verificación en dos pasos.</li></ul>
           <h2>2. Cómo reconocer el phishing</h2><p>Desconfía de remitentes extraños, mensajes que te urgen a actuar, errores de redacción y enlaces acortados o que no coinciden con el sitio oficial.</p>
           <h2>3. Respaldo 3-2-1</h2><p>Mantén <strong>3</strong> copias de tus datos, en <strong>2</strong> tipos de medios distintos y <strong>1</strong> copia fuera del lugar donde trabajas.</p>` }),
       base({ id: 'art-higiene-manos', title: 'Higiene de manos: los 5 momentos de la OMS', subject: 'Enfermería', grade: 'Bachillerato Técnico • 5to', readTime: 5, views: 1750,
-        summary: 'La medida más simple y eficaz para prevenir infecciones asociadas a la atención de salud.', coverImage: 'portada-enfermeria.svg', coverAlt: 'Portada del área Enfermería', createdAt: new Date('2026-11-05T10:00:00Z').getTime(),
+        summary: 'La medida más simple y eficaz para prevenir infecciones asociadas a la atención de salud.', coverImage: 'portada-enfermeria.svg', coverAlt: 'Portada del área Enfermería', createdAt: this._ago(3),
         tags: ['Enfermería', 'Bioseguridad', 'OMS'],
         content: this._ficha('Fundamentos de enfermería y bioseguridad', 'Aplica medidas de prevención y control de infecciones', 'Ejecuta la higiene de manos en los 5 momentos recomendados por la OMS.', '2 sesiones de 90 min') +
           `<h2>Los 5 momentos</h2><ol><li>Antes del contacto con el paciente.</li><li>Antes de realizar una tarea limpia o aséptica.</li><li>Después del riesgo de exposición a líquidos corporales.</li><li>Después del contacto con el paciente.</li><li>Después del contacto con el entorno del paciente.</li></ol>
           <h2>Técnica</h2><p>La fricción con preparado de base alcohólica dura de 20 a 30 segundos. El lavado con agua y jabón dura de 40 a 60 segundos y se prefiere cuando las manos están visiblemente sucias.</p>` }),
       base({ id: 'art-signos-vitales', title: 'Signos vitales: técnica de toma y valores de referencia', subject: 'Enfermería', grade: 'Bachillerato Técnico • 4to', readTime: 7, views: 1390,
-        summary: 'Aprende a medir, interpretar y registrar correctamente los signos vitales.', coverImage: 'portada-enfermeria.svg', coverAlt: 'Portada del área Enfermería', createdAt: new Date('2026-11-09T10:00:00Z').getTime(),
+        summary: 'Aprende a medir, interpretar y registrar correctamente los signos vitales.', coverImage: 'portada-enfermeria.svg', coverAlt: 'Portada del área Enfermería', createdAt: this._ago(14),
         tags: ['SignosVitales', 'Enfermería', 'Registro'],
         content: this._ficha('Procedimientos básicos de enfermería', 'Realiza la valoración inicial del paciente', 'Toma y registra los signos vitales con la técnica adecuada.', '3 sesiones de 90 min') +
           `<h2>Valores de referencia en adultos</h2><ul><li><strong>Temperatura:</strong> 36.1 a 37.2 °C</li><li><strong>Frecuencia cardíaca:</strong> 60 a 100 latidos por minuto</li><li><strong>Frecuencia respiratoria:</strong> 12 a 20 respiraciones por minuto</li><li><strong>Presión arterial:</strong> menor de 120/80 mmHg</li><li><strong>Saturación de oxígeno:</strong> 95 % o más</li></ul>
@@ -173,9 +177,9 @@ print("Total:", precio + itbis)</code></pre><p>Prueba con varios valores y verif
         content: 'Para resolver rápido sus tareas miren este link gratis en hxxp://descarga-examenes-rd.cc y ganen puntos sin estudiar.', status: 'pending', isSpamAlert: true, createdAt: Date.now() - 2 * 3600 * 1000, teacherReply: null }
     ];
     const media = [
-      { id: 'media-compost', title: 'Diagrama de compost en capas', category: 'infografias', url: 'portada-agropecuaria.svg', sizeKB: 12, dimensions: '1200x800', altText: 'Portada del área Agropecuaria', associatedArticle: 'Compost y manejo del suelo en la finca escolar', createdAt: new Date('2026-10-14').getTime() },
-      { id: 'media-asiento', title: 'Plantilla de asiento contable', category: 'fichas', url: 'portada-gestion.svg', sizeKB: 12, dimensions: '1200x800', altText: 'Portada del área Gestión Administrativa y Tributaria', associatedArticle: 'El asiento contable paso a paso', createdAt: new Date('2026-10-20').getTime() },
-      { id: 'media-bioseguridad', title: 'Simulacro de higiene de manos', category: 'portadas', url: 'portada-enfermeria.svg', sizeKB: 12, dimensions: '1200x800', altText: 'Portada del área Enfermería', associatedArticle: 'Higiene de manos: los 5 momentos de la OMS', createdAt: new Date('2026-11-05').getTime() }
+      { id: 'media-compost', title: 'Diagrama de compost en capas', category: 'infografias', url: 'portada-agropecuaria.svg', sizeKB: 12, dimensions: '1200x800', altText: 'Portada del área Agropecuaria', associatedArticle: 'Compost y manejo del suelo en la finca escolar', createdAt: this._ago(2) },
+      { id: 'media-asiento', title: 'Plantilla de asiento contable', category: 'fichas', url: 'portada-gestion.svg', sizeKB: 12, dimensions: '1200x800', altText: 'Portada del área Gestión Administrativa y Tributaria', associatedArticle: 'El asiento contable paso a paso', createdAt: this._ago(5) },
+      { id: 'media-bioseguridad', title: 'Simulacro de higiene de manos', category: 'portadas', url: 'portada-enfermeria.svg', sizeKB: 12, dimensions: '1200x800', altText: 'Portada del área Enfermería', associatedArticle: 'Higiene de manos: los 5 momentos de la OMS', createdAt: this._ago(3) }
     ];
     return { articles, comments, media };
   }
@@ -185,7 +189,7 @@ print("Total:", precio + itbis)</code></pre><p>Prueba con varios valores y verif
     for (const a of s.articles) await this._putRaw('articles', a);
     for (const c of s.comments) await this._putRaw('comments', c);
     for (const m of s.media) await this._putRaw('media', m);
-    await this._putRaw('settings', { key: 'contentVersion', version: 2 });
+    await this._putRaw('settings', { key: 'contentVersion', version: 3 });
   }
 
   async _deleteRaw(store, id) {
@@ -203,7 +207,21 @@ print("Total:", precio + itbis)</code></pre><p>Prueba con varios valores y verif
       const req = this.db.transaction(['settings'], 'readonly').objectStore('settings').get('contentVersion');
       req.onsuccess = () => resolve(req.result); req.onerror = () => resolve(null);
     });
-    if (cur && cur.version >= 2) return;
+    if (cur && cur.version >= 3) return;
+    if (cur && cur.version === 2) {
+      // Solo actualiza las fechas de los ejemplos para que sean recientes (hora de República Dominicana)
+      const ages = this._seedAges();
+      for (const id of Object.keys(ages)) {
+        const store = id.indexOf('media-') === 0 ? 'media' : 'articles';
+        const item = await new Promise((resolve) => {
+          const r = this.db.transaction([store], 'readonly').objectStore(store).get(id);
+          r.onsuccess = () => resolve(r.result); r.onerror = () => resolve(null);
+        });
+        if (item) { item.createdAt = this._ago(ages[id]); await this._putRaw(store, item); }
+      }
+      await this._putRaw('settings', { key: 'contentVersion', version: 3 });
+      return;
+    }
     for (const id of ['art-ciclo-agua', 'art-fracciones-equiv', 'art-oraciones-claras', 'art-manglares-borrador']) await this._deleteRaw('articles', id);
     for (const id of ['comm-1', 'comm-2', 'comm-3']) await this._deleteRaw('comments', id);
     for (const id of ['media-esquema-ciclo', 'media-manglares', 'media-fracciones']) await this._deleteRaw('media', id);

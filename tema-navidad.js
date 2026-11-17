@@ -44,7 +44,8 @@
     var b = document.createElement('div');
     b.className = 'nv-banner';
     b.innerHTML = '<strong>🎄 ¡Felices Fiestas! 🎁</strong>' +
-      '<small>Que esta Navidad llegue con mucho aprendizaje, alegría y esperanza. ¡Hoy toca aprender jugando! ⛄</small>';
+      '<small>Que esta Navidad llegue con mucho aprendizaje, alegría y esperanza. ¡Hoy toca aprender jugando! ⛄</small>' +
+      (window.SaberUpFecha ? '<small>📅 Hoy es ' + window.SaberUpFecha.larga() + '</small>' : '');
     main.insertBefore(b, main.firstChild);
   }
 

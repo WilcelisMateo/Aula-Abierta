@@ -81,7 +81,7 @@
           el.alt = p.name;
           break;
         case 'greeting':
-          el.textContent = `¡Buen día, ${p.title ? p.title + ' ' : ''}${firstName(p.name)}!`;
+          el.textContent = `¡${window.SaberUpFecha ? window.SaberUpFecha.saludo() : 'Buen día'}, ${p.title ? p.title + ' ' : ''}${firstName(p.name)}!`;
           break;
         case 'roleBadge':
           el.textContent = p.role || el.textContent;
